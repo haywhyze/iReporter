@@ -1,0 +1,32 @@
+/* landing-page */
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 98vh;
+    margin-top: -1.5rem;
+    padding-top: 6rem;
+    background-image: linear-gradient( to right bottom, rgba(16, 42, 110, .6), rgba(242, 48, 62, .6)), url('../img/Bad-Roads.jpg');
+    background-size: cover;
+    background-position: top;
+}
+
+.hero__content {
+    margin: 0;
+    position: relative;
+    text-align: center;
+    color: var(--color-white);
+    width: 50%;
+}
+
+.hero__title {
+    font-weight: 300;
+    line-height: 1.2;
+    text-shadow: 1px 2px 2px #000;
+}
+
+.hero__content .button {
+    font-size: 1rem;
+    padding: .6em 1.1em;
+}

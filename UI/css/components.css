@@ -1,0 +1,95 @@
+/****** SITE NAVIGATION STYLES *****/
+
+.site-nav {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    padding: .5em 1em;
+    background-color: rgba(32, 32, 32, .8);
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
+}
+
+.site-nav__logo {
+    height: 4em;
+}
+
+.site-nav ul {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    padding: .5em;
+    margin: auto;
+}
+
+.site-nav__right {
+    margin-left: auto;
+}
+
+.site-nav__item {
+    margin-top: 0;
+}
+
+.site-nav__right .site-nav__item {
+    border-color: var(--color-white);
+}
+
+.site-nav__right .site-nav__item a {
+    color: var(--color-white);
+}
+
+.site-nav__item+li {
+    margin-left: .5em;
+}
+
+
+/* .site-nav__item a {
+    display: block;
+    color: var(--color-white);
+} */
+
+.site-nav__item a:hover {
+    color: var(--color-white);
+}
+
+
+/* Button Styles */
+
+.button {
+    border: .5px solid var(--color-white);
+    border-radius: 100px;
+    transition: all .2s;
+    padding: .4em .8em;
+    cursor: pointer;
+    color: var(--color-white);
+    background: transparent;
+}
+
+.button:hover {
+    background: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, .9);
+}
+
+.button:active {
+    transform: translateY(-1px);
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, .9);
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button a {
+    display: block;
+    color: var(--color-white);
+}
+
+.button--alt {
+    text-transform: uppercase;
+    background: var(--color-tertiary);
+}
+
+.button--alt:hover {
+    font-weight: 700;
+    background: var(--color-secondary);
+}

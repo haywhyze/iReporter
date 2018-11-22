@@ -1,0 +1,52 @@
+/* Variables */
+
+:root {
+    --color-primary: #102a6e;
+    --color-secondary: #f2303e;
+    --color-tertiary: #745cd5;
+    --color-white: #eee;
+    --color-black: #222;
+}
+
+:root {
+    font-size: 0.75em;
+    box-sizing: border-box;
+}
+
+@media (min-width: 800px) {
+     :root {
+        font-size: .9em;
+    }
+}
+
+@media (min-width: 1200px) {
+     :root {
+        font-size: 1.1em;
+    }
+}
+
+body {
+    /* background: url('../img/Bad-Roads.jpg') no-repeat center center fixed;
+    background-size: cover; */
+    font-family: 'Montserrat', sans-serif;
+}
+
+body *+* {
+    margin-top: 1.5em;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
