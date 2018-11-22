@@ -17,17 +17,15 @@
     <div class="container">
         <header>
             <nav class="site-nav">
-                <img class="site-nav__logo" src="img/logo.svg" alt="Logo" srcset="">
+                <a href="#"><img class="site-nav__logo" src="img/logo.svg" alt="Logo" srcset=""></a>
 
-                <ul>
-                    <li class="site-nav__item button"> <a href="#">How it Works</a> </li>
-                    <li class="site-nav__item button"> <a href="#">Why this?</a></li>
-                    <li class="site-nav__item button"> <a href="#">Featured Reports</a> </li>
-                    <li class="site-nav__item button"> <a href="#">Contact</a> </li>
+                <ul class="site-nav-ul">
+                    <li class="site-nav__item button"> <a href="#how">How it Works</a> </li>
+                    <li class="site-nav__item button"> <a href="#contact">Contact</a> </li>
                 </ul>
-                <ul class="site-nav__right">
-                    <li class="site-nav__item button"> <a href="#">Sign In</a> </li>
-                    <li class="site-nav__item button"> <a href="#">Sign Up</a> </li>
+                <ul class="site-nav-ul site-nav__right">
+                    <li class="site-nav__item button"> <a href="signin.html">Sign In</a> </li>
+                    <li class="site-nav__item button button--alt"> <a href="signup.html">Sign Up</a> </li>
                 </ul>
             </nav>
         </header>
@@ -40,13 +38,114 @@
                         <br>This app is built for that.
                     </h2>
                     <div class="hero__body">
-                        <button class="button">How to use the app</button>
-                        <button class="button button--alt">Get Started by Signing Up</button>
+                        <button class="button button--alt"><a href="signup.html">Get Started by Signing Up</a></button>
                     </div>
                 </div>
             </section>
+            <section id="how" class="how">
+                <h2>Get Started within 5 minutes</h2>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <h4>1. Register</h4>
+                        <img class="how-icon" src="img/svg/add-user.svg" alt="">
+                        <p>Navigate to the sign up page where you will have to fill a form to register. This is necessary to keep track of reports you submit.</p>
+                    </div>
+                    <div class="flex-item">
+                        <h4>2. Login</h4>
+                        <img class="how-icon" src="img/svg/user-check.svg" alt="">
+                        <p>Login with credentials provided during registration to create a report, update or delete a previously created report and view history of reports you have created
+                        </p>
+                    </div>
+                    <div class="flex-item">
+                        <h4>3. Create A Report</h4>
+                        <img class="how-icon" src="img/svg/add-to-list.svg" alt="">
+                        <p>On the form to create a report you will be asked to identify the nature of the report. You will also provide a title, comment, location, image(optional) and video(optional).
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <h4>4. Update A Report</h4>
+                        <img class="how-icon" src="img/svg/unread.svg" alt="">
+                        <p> Before a report is being investigated, you can update its location and comment. Navigate to your profile page to see a list of reports you can edit.
+                    </div>
+                    <div class="flex-item">
+                        <h4>5. Delete a report</h4>
+                        <img class="how-icon" src="img/svg/ungroup.svg" alt="">
+                        <p>Before a report is being investigated, you can delete it. To do this, Navigate to your profile page to see a list of reports you can delete.</p>
+                    </div>
+                    <div class="flex-item">
+                        <h4>6. Track all your reports</h4>
+                        <img class="how-icon" src="img/svg/list2.svg" alt="">
+                        <p>On your profile page, it is easy to keep track of all your reports and the status of each of the reports. Click on view all reports tab to see a list of all reports submitted.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+
+                <div class="contact">
+                    <div class="contact__form">
+                        <form action="#" class="form">
+
+                            <h2 class="heading-secondary">
+                                Feel free to ask us anything
+                            </h2>
+
+
+                            <div class="form__group">
+                                <input type="text" name="name" placeholder="Full name" id="name" class="form__input required">
+                                <label for="name" class="form__label">Full name</label>
+                            </div>
+
+                            <div class="form__group">
+                                <input type="email" name="email" placeholder="Email address" id="email" class="form__input required">
+                                <label for="email" class="form__label">Email address</label>
+                            </div>
+
+                            <div class="form__group">
+                                <textarea class="form__textarea" name="message" id="message" placeholder="Your Message Here"></textarea>
+                                <label for="message" class="form__label">Your Message Here</label>
+                            </div>
+
+                            <a href="#" class="button button--alt">Send Message</a>
+                        </form>
+                    </div>
+                </div>
+
+            </section>
         </main>
+        <footer>
+            <div>
+                <nav class="site-nav-foot">
+                    <ul class="site-nav-ul">
+                        <li class="site-nav__item button"> <a href="">Terms and Conditions</a> </li>
+                    </ul>
+                    <a><img class="site-nav__logo" src="img/logo.svg" alt="Logo" srcset=""></a>
+                    <div class>
+                        <p> &copy;2018 by Yusuf Ayo. All Rights Reserved</p>
+                    </div>
+                </nav>
+            </div>
+
+        </footer>
+        <a class="button go-to-top" href="#">
+            <svg class="icon icon-circle-up"><use xlink:href="#icon-circle-up"></use></svg>
+        </a>
+
+
     </div>
+    <script src="js/script.js"></script>
 </body>
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+    <symbol id="icon-circle-up" viewBox="0 0 32 32">
+    <title>circle-up</title>
+    <path d="M0 16c0 8.837 7.163 16 16 16s16-7.163 16-16-7.163-16-16-16-16 7.163-16 16zM29 16c0 7.18-5.82 13-13 13s-13-5.82-13-13 5.82-13 13-13 13 5.82 13 13z"></path>
+    <path d="M22.086 20.914l2.829-2.829-8.914-8.914-8.914 8.914 2.828 2.828 6.086-6.086z"></path>
+    </symbol>
+    </defs>
+    </svg>
 
 </html>
