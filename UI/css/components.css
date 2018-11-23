@@ -43,6 +43,8 @@ ul {
 
 .site-nav__item {
     margin-top: 0;
+    color: var(--color-white);
+    align-self: center;
 }
 
 .site-nav__right .site-nav__item {
