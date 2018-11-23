@@ -31,7 +31,7 @@ let changeBackground = () => {
     hero.style.backgroundImage = b_urls[initial = ++initial % b_urls.length];
     hero.style.transition = 'background 1s ease-in-out';
 }
-setInterval(changeBackground, 5000);
+if (hero) setInterval(changeBackground, 5000);
 
 window.addEventListener('scroll', () => {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {

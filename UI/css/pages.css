@@ -92,3 +92,40 @@
         left: 80vw;
     }
 }
+
+
+/* Sign in page */
+
+.sign-body {
+    background: url('https://images.unsplash.com/photo-1503756234508-e32369269deb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=47b63db904d2c72377ffc588f645eb45&auto=format&fit=crop&w=1575&q=80') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.sign-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+.sign-footer {
+    width: 100vw;
+}
+
+@media (max-width: 800px) {
+    .sign-footer .site-nav__logo {
+        height: 2em;
+    }
+}
+
+.container-form {
+    display: block;
+    text-align: center;
+    margin: 6rem auto 1rem auto;
+    max-width: 30rem;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgba(240, 240, 240, .7);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 3px 6px #888;
+    padding: 2rem 1rem;
+}

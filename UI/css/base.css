@@ -79,6 +79,10 @@ footer {
     margin: 0;
 }
 
+footer a {
+    margin: 0;
+}
+
 section {
     min-height: 50vh;
     padding: 0 4rem;
@@ -95,6 +99,13 @@ section {
 .icon {
     height: 2rem;
     width: 4em;
+}
+
+.copy {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(32, 32, 32, 1);
 }
 
 @keyframes moveInLeft {
