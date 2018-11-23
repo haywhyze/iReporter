@@ -160,6 +160,7 @@
 /* Style the buttons that are used to open the tab content */
 
 .tab button {
+    width: 100%;
     display: block;
     margin-top: 0;
     border: none;
