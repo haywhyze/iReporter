@@ -97,7 +97,8 @@
 /* Sign in page */
 
 .sign-body {
-    background: url('https://images.unsplash.com/photo-1503756234508-e32369269deb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=47b63db904d2c72377ffc588f645eb45&auto=format&fit=crop&w=1575&q=80') no-repeat center center fixed;
+    background-image: linear-gradient(to right bottom, var(--color-tertiary), var(--color-secondary));
+    background: url('https://images.unsplash.com/photo-1489582558212-475fa5010897?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cc6e93a991d7f256e61ce38d9b1f2177&auto=format&fit=crop&w=751&q=80') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -109,7 +110,7 @@
 }
 
 .sign-footer {
-    width: 100vw;
+    width: 100%;
 }
 
 @media (max-width: 800px) {
