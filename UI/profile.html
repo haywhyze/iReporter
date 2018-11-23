@@ -41,6 +41,40 @@
                 <div id="create" class="tabcontent">
                     <h2>Create Report</h2>
                     <p>We are here for you. What would you like to report?</p>
+                    <form action="#" class="form">
+
+                        <div class="form__group">
+                            <p>Is this report a red flag or an intervention record</p>
+                            <input type="radio" name="record-type" value="red-flag"> Red-Flag<br>
+                            <input type="radio" name="record-type" value="intervention"> Intervention<br>
+                        </div>
+
+                        <div class="form__group">
+                            <input type="text" name="subject" placeholder="Subject of the report" id="subject" class="form__input required">
+                            <label for="subject" class="form__label">Subject of the report</label>
+                        </div>
+
+                        <div class="form__group">
+                            <textarea class="form__textarea" name="details" id="details" placeholder="Details of the report"></textarea>
+                            <label for="details" class="form__label">Details of the report</label>
+                        </div>
+
+                        <div class="form__group">
+                            <input type="location" name="location" placeholder="Location" id="location" class="form__input required">
+                            <label for="location" class="form__label">Location</label>
+                        </div>
+
+                        <div class="form__group">
+                            <p>
+                                Upload an image/video to subststantiate your report
+                            </p>
+                            Select file: <input type="file" name="myFile">
+                        </div>
+                        <div>
+                            <a href="#" class="button button--alt">Create Record</a>
+                        </div>
+                    </form>
+
                 </div>
 
                 <div id="update" class="tabcontent">
@@ -73,6 +107,9 @@
             </div>
 
         </footer>
+        <a class="button go-to-top" href="#">
+            <svg class="icon icon-circle-up"><use xlink:href="#icon-circle-up"></use></svg>
+        </a>
 
 
 

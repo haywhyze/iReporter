@@ -137,6 +137,7 @@
 .profile-container {
     display: flex;
     align-content: flex-start;
+    justify-content: center;
     margin-top: 5rem;
     margin-left: 13rem;
     text-align: center;
