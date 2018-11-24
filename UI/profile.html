@@ -44,7 +44,7 @@
                     <form action="#" class="form">
 
                         <div class="form__group">
-                            <p>Is this report a red flag or an intervention record</p>
+                            <h5>Is this report a red flag or an intervention record</h5>
                             <input type="radio" name="record-type" value="red-flag"> Red-Flag<br>
                             <input type="radio" name="record-type" value="intervention"> Intervention<br>
                         </div>
@@ -60,14 +60,19 @@
                         </div>
 
                         <div class="form__group">
-                            <input type="location" name="location" placeholder="Location" id="location" class="form__input required">
-                            <label for="location" class="form__label">Location</label>
+                            <h5>Location of incident</h5>
+                            <p>You can easily click on the location of the incident <br>you wish to report on the map below
+                                <br> or edit the value of the coordinates in the form provided</p>
+                            <div id="map"></div>
+                            <input type="text" name="location" placeholder="Location Coordinates (latitude, longitude)" id="location" class="form__input required">
+                            <label for="subject" class="form__label">Location Coordinates</label>
+                            <p id="address"></p>
                         </div>
 
                         <div class="form__group">
-                            <p>
-                                Upload an image/video to subststantiate your report
-                            </p>
+                            <h5>
+                                Upload an image/video to subststantiate your report (optional)
+                            </h5>
                             Select file: <input type="file" name="myFile">
                         </div>
                         <div>
@@ -89,6 +94,9 @@
                 <div id="view" class="tabcontent">
                     <h2>View Reports</h2>
                     <p>Here is a list of your previously submitted reports.</p>
+                    <div>
+                        title/subject(h5), comment(p), location(stylishly), image/video(img/video) media object? card?
+                    </div>
                 </div>
             </div>
 
@@ -115,6 +123,10 @@
 
     </div>
     <script src="js/script.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwiB2TC3HMmVi9N3182wh69MKnIOYQ0Gc&callback=initMap"></script>
+
+
 </body>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>

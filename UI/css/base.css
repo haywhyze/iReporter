@@ -67,6 +67,11 @@ h2:not(.hero__title) {
     text-shadow: 3px 5px 5px rgba(0, 0, 0, .3);
 }
 
+#map {
+    height: 20rem;
+    width: 30rem;
+}
+
 h4 {
     font-size: 1.2rem;
 }

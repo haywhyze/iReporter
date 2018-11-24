@@ -53,7 +53,6 @@ window.addEventListener('scroll', () => {
 tabcontent = Array.from(tabcontent);
 tablinks = Array.from(tablinks);
 let openTab = () => {
-    console.log('eyo')
     tablinks.map((e) => {
         // if (e.classList.contains('active')) e.classList.remove('active');
         e.addEventListener('click', () => {
@@ -69,3 +68,64 @@ let openTab = () => {
 
 
 tablinks.map((e) => e.addEventListener('click', openTab()));
+
+//Google Maps
+
+var markers = [];
+
+// Removes the markers from the map, but keeps them in the array.
+const clearMarkers = () => {
+    if (markers[0])
+        markers.map((e) => e.setMap(null));
+}
+
+const placeMarkerAndPanTo = (latLng, map) => {
+    const marker = new google.maps.Marker({
+        position: latLng,
+        map: map
+    });
+    map.panTo(latLng);
+    markers.push(marker);
+}
+
+function initMap() {
+
+    var map = new google.maps.Map(document.querySelector('#map'), {
+        zoom: 13,
+        center: {
+            lat: 6.605874,
+            lng: 3.349149
+        }
+    });
+
+
+    let location = document.querySelector('#location');
+    let address = document.querySelector('#address');
+    map.addListener('click', (e) => {
+        clearMarkers();
+        placeMarkerAndPanTo(e.latLng, map);
+        geocodeLatLng(e.latLng);
+        location.value = `${e.latLng}`;
+    });
+}
+
+
+
+function geocodeLatLng(latLng) {
+    const geocoder = new google.maps.Geocoder;
+    var latlngStr = String(latLng).split(',', 2);
+
+    var latlng = { lat: parseFloat(latlngStr[0].substr(1)), lng: parseFloat(latlngStr[1]) };
+
+    geocoder.geocode({ 'location': latlng }, function(results, status) {
+        if (status === 'OK') {
+            if (results[0]) {
+                address.innerHTML = results[0].formatted_address;
+            } else {
+                address.innerHTML = 'Location Address not Available';
+            }
+        } else {
+            console.log('Place not found');
+        }
+    });
+}
