@@ -26,6 +26,10 @@
     }
 }
 
+.green {
+    background: green !important;
+}
+
 body {
     /* background: url('../img/Bad-Roads.jpg') no-repeat center center fixed;
     background-size: cover; */
