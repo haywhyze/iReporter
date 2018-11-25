@@ -7,6 +7,7 @@ let site_nav = document.querySelector('.site-nav');
 let tablinks = document.querySelectorAll('.tablinks');
 let tabcontent = document.querySelectorAll('.tabcontent');
 
+// To change backround image on home screen
 let b_urls = [`
     linear-gradient( 
         to left bottom, 
@@ -36,6 +37,8 @@ let changeBackground = () => {
 }
 if (hero) setInterval(changeBackground, 5000);
 
+
+// TO animate page header on scroll
 window.addEventListener('scroll', () => {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         nav_ul.style.padding = '0';
@@ -50,6 +53,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// For Tab functionality
 tabcontent = Array.from(tabcontent);
 tablinks = Array.from(tablinks);
 let openTab = () => {
@@ -70,10 +74,9 @@ let openTab = () => {
 tablinks.map((e) => e.addEventListener('click', openTab()));
 
 //Google Maps
-
+// For the functions on the map
 var markers = [];
 
-// Removes the markers from the map, but keeps them in the array.
 const clearMarkers = () => {
     if (markers[0])
         markers.map((e) => e.setMap(null));
@@ -130,6 +133,8 @@ function geocodeLatLng(latLng) {
     });
 }
 
+
+// Update record Modal
 let updateBtn = document.querySelectorAll('.update-button');
 let modal = document.querySelectorAll('.modal');
 modal = Array.from(modal);
@@ -151,37 +156,8 @@ updateBtn.map((e) => {
 var span = document.getElementsByClassName("close");
 span = Array.from(span)
 span.map((e) => {
-        e.onclick = function() {
-            me.style.display = "none";
-        }
+    e.onclick = function() {
+        me.style.display = "none";
+    }
 
-    })
-    // // Get the button that opens the modal
-    // var btn = document.getElementById("myBtn");
-
-// // Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-
-// // When the user clicks the button, open the modal 
-// btn.onclick = function() {
-//     modal.style.display = "block";
-// }
-
-// // When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//     modal.style.display = "none";
-// }
-
-// // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
-
-// const showModalUpdate = (button) => {
-//     button.addEventListener('click', (e) => {
-//         // let preAddress = e.previousSibling.innerHTML;
-//         e.nextElementSibling.style.display = 'display';
-//     })
-// }
+})

@@ -1,0 +1,120 @@
+/* Profile */
+
+.profile-container {
+    display: flex;
+    align-content: flex-start;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-left: 13rem;
+    text-align: center;
+    background-color: rgba(240, 240, 240, .8);
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+
+/* Style the tab */
+
+.tab {
+    background-color: transparent;
+    width: 13rem;
+    position: fixed;
+    z-index: 7;
+}
+
+
+/* Style the buttons that are used to open the tab content */
+
+.tab button {
+    display: block;
+    width: 100%;
+    margin-top: 0;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(32, 32, 32, .8);
+    transition: 0.3s;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-white);
+    padding: 2em;
+}
+
+.tab button:last-child {
+    border-bottom: none;
+}
+
+
+/* Change background color of buttons on hover */
+
+.tab button:hover {
+    background-color: #444;
+    box-shadow: none;
+    transform: translateY(-.5);
+}
+
+
+/* Create an active/current "tab button" class */
+
+.tab button.active {
+    background-color: rgba(240, 240, 240, .8);
+    color: var(--color-black);
+    text-shadow: none;
+}
+
+
+/* Style the tab content */
+
+.tabcontent {
+    display: none;
+}
+
+#home,
+#draft {
+    display: block;
+}
+
+#home>div {
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    #home>div {
+        flex-flow: column wrap;
+        width: 100%;
+    }
+}
+
+#home .card {
+    width: auto;
+    display: inline-block;
+    padding: 0;
+    margin: auto;
+}
+
+#home h2 {
+    font-size: 3rem;
+}
+
+@media screen and (max-width: 800px) {
+    .tab {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin: 6rem auto 0 auto;
+    }
+    .tab button {
+        padding: .5em;
+        display: inline-block;
+        font-size: x-small;
+        text-transform: none;
+        margin: 0;
+        border: none;
+    }
+    .profile-container {
+        margin-left: 0;
+        margin-top: 0;
+    }
+}

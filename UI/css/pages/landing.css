@@ -1,0 +1,94 @@
+/* landing-page */
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 98vh;
+    margin-top: -1.5rem;
+    padding-top: 6rem;
+    background-image: linear-gradient( to right bottom, rgba(16, 42, 110, .6), rgba(242, 48, 62, .6)), url('../../img/Bad-Roads.jpg');
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0%, 100% 90vh, 0% 100%);
+}
+
+.hero__content {
+    margin: 0;
+    position: relative;
+    text-align: center;
+    color: var(--color-white);
+    width: 50%;
+    animation: moveInTop 1.5s ease-in;
+}
+
+.hero__title {
+    font-weight: 300;
+    line-height: 1.2;
+    text-shadow: 1px 2px 2px #000;
+}
+
+.hero__content .button {
+    font-size: 1rem;
+    padding: .6em 1.1em;
+    animation: moveInBottom 2s ease-in;
+}
+
+.how {
+    background-color: beige;
+    padding: 5rem 7rem;
+    margin-top: -10vh;
+}
+
+.how-icon {
+    height: 2rem;
+}
+
+.contact-section {
+    margin: -1rem 0;
+    padding: 4rem 0;
+    background-image: linear-gradient(to right bottom, var(--color-tertiary), var(--color-secondary));
+}
+
+@media (max-width: 56.25em) {
+    .contact-section {
+        padding: 10rem 0;
+    }
+}
+
+.contact {
+    background-image: linear-gradient(105deg, rgba(255, 255, 255, .7) 0%, rgba(255, 255, 255, .7), 50%, transparent 50%), url(../../img/uganda2.jpg);
+    background-size: 100%;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .3);
+    min-height: 40rem;
+}
+
+.contact__form {
+    width: 50%;
+}
+
+@media (max-width: 56.25em) {
+    .contact__form {
+        width: 100%;
+    }
+    .contact-section {
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 800px) {
+    .hero {
+        padding: 0;
+    }
+    .hero__content {
+        width: 80%;
+    }
+    .how {
+        padding: 5rem .5em;
+    }
+    .go-to-top {
+        top: 80vh;
+        left: 80vw;
+    }
+}
