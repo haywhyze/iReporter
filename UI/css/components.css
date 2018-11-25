@@ -3,7 +3,7 @@
 .site-nav {
     display: flex;
     position: fixed;
-    z-index: 444;
+    z-index: 10;
     justify-content: space-between;
     width: 100%;
     background-color: rgba(32, 32, 32, .8);
@@ -72,7 +72,11 @@ ul {
     cursor: pointer;
     text-shadow: 1px 2px 2px #000;
     font-weight: 400;
-    color: var(--color-white)
+    color: var(--color-white);
+}
+
+.button a {
+    color: var(--color-white);
 }
 
 .button:hover {
@@ -244,4 +248,53 @@ ul {
     .card__pictre {
         height: auto;
     }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 20;
+    padding-top: 3rem;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    color: #000;
+    margin: auto;
+    background-color: rgba(205, 205, 205, 1);
+    padding: 4rem;
+    border: 1px solid #888;
+    width: 70%;
+}
+
+@media (max-width: 800px) {
+    width: 90%;
+}
+
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 5rem;
+    font-weight: bold;
+    position: fixed;
+    top: 5%;
+    left: 87%
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }

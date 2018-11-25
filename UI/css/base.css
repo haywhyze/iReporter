@@ -100,10 +100,14 @@ section {
 
 .go-to-top {
     position: fixed;
-    z-index: 34444;
+    z-index: 5;
     top: 83vh;
     left: 87vw;
-    background-color: rgba(255, 255, 255, .2);
+    border-radius: 50%;
+}
+
+.go-to-top:hover {
+    transform: translateY(-4px);
 }
 
 .icon {
