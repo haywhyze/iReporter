@@ -26,6 +26,22 @@
     }
 }
 
+.green {
+    background: green !important;
+}
+
+.blue {
+    background: blue !important;
+}
+
+.grey {
+    background: grey !important;
+}
+
+.red {
+    background: red !important;
+}
+
 body {
     /* background: url('../img/Bad-Roads.jpg') no-repeat center center fixed;
     background-size: cover; */
@@ -52,7 +68,7 @@ body *+* {
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: var(--color-tertiary);
 }
 
 h2:not(.hero__title) {
@@ -65,6 +81,11 @@ h2:not(.hero__title) {
     color: transparent;
     text-align: center;
     text-shadow: 3px 5px 5px rgba(0, 0, 0, .3);
+}
+
+#map {
+    height: 20rem;
+    width: 30rem;
 }
 
 h4 {
@@ -91,10 +112,14 @@ section {
 
 .go-to-top {
     position: fixed;
-    z-index: 34444;
+    z-index: 5;
     top: 83vh;
     left: 87vw;
-    background-color: rgba(255, 255, 255, .2);
+    border-radius: 50%;
+}
+
+.go-to-top:hover {
+    transform: translateY(-4px);
 }
 
 .icon {

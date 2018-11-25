@@ -7,6 +7,7 @@ let site_nav = document.querySelector('.site-nav');
 let tablinks = document.querySelectorAll('.tablinks');
 let tabcontent = document.querySelectorAll('.tabcontent');
 
+// To change backround image on home screen
 let b_urls = [`
     linear-gradient( 
         to left bottom, 
@@ -36,6 +37,8 @@ let changeBackground = () => {
 }
 if (hero) setInterval(changeBackground, 5000);
 
+
+// TO animate page header on scroll
 window.addEventListener('scroll', () => {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         nav_ul.style.padding = '0';
@@ -50,10 +53,10 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// For Tab functionality
 tabcontent = Array.from(tabcontent);
 tablinks = Array.from(tablinks);
 let openTab = () => {
-    console.log('eyo')
     tablinks.map((e) => {
         // if (e.classList.contains('active')) e.classList.remove('active');
         e.addEventListener('click', () => {
@@ -69,3 +72,92 @@ let openTab = () => {
 
 
 tablinks.map((e) => e.addEventListener('click', openTab()));
+
+//Google Maps
+// For the functions on the map
+var markers = [];
+
+const clearMarkers = () => {
+    if (markers[0])
+        markers.map((e) => e.setMap(null));
+}
+
+const placeMarkerAndPanTo = (latLng, map) => {
+    const marker = new google.maps.Marker({
+        position: latLng,
+        map: map
+    });
+    map.panTo(latLng);
+    markers.push(marker);
+}
+
+function initMap() {
+
+    var map = new google.maps.Map(document.querySelector('#map'), {
+        zoom: 13,
+        center: {
+            lat: 6.605874,
+            lng: 3.349149
+        }
+    });
+
+
+    let location = document.querySelector('#location');
+    let address = document.querySelector('#address');
+    map.addListener('click', (e) => {
+        clearMarkers();
+        placeMarkerAndPanTo(e.latLng, map);
+        geocodeLatLng(e.latLng);
+        location.value = `${e.latLng}`;
+    });
+}
+
+
+
+function geocodeLatLng(latLng) {
+    const geocoder = new google.maps.Geocoder;
+    var latlngStr = String(latLng).split(',', 2);
+
+    var latlng = { lat: parseFloat(latlngStr[0].substr(1)), lng: parseFloat(latlngStr[1]) };
+
+    geocoder.geocode({ 'location': latlng }, function(results, status) {
+        if (status === 'OK') {
+            if (results[0]) {
+                address.innerHTML = results[0].formatted_address;
+            } else {
+                address.innerHTML = 'Location Address not Available';
+            }
+        } else {
+            console.log('Place not found');
+        }
+    });
+}
+
+
+// Update record Modal
+let updateBtn = document.querySelectorAll('.update-button');
+let modal = document.querySelectorAll('.modal');
+modal = Array.from(modal);
+modal.map((e) => {
+    e.style.display = 'none';
+    console.log(e);
+})
+let me;
+updateBtn = Array.from(updateBtn);
+updateBtn.map((e) => {
+    e.addEventListener('click', (x) => {
+        x.preventDefault();
+        e.nextElementSibling.style.display = 'block';
+        me = e.nextElementSibling;
+    })
+})
+
+// When the user clicks on <span> (x), close the modal
+var span = document.getElementsByClassName("close");
+span = Array.from(span)
+span.map((e) => {
+    e.onclick = function() {
+        me.style.display = "none";
+    }
+
+})

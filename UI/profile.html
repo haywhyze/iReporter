@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="favicon.png">
     <link rel="stylesheet" href="css/style.css">
-    <title>Home | iReporter</title>
+    <title>Yusuf Ayo | iReporter</title>
 
 </head>
 
@@ -21,7 +21,7 @@
 
                 <ul class="site-nav-ul site-nav__right">
                     <li class="site-nav__item"> Welcome, <a href="#">Yusuf Ayo</a> </li>
-                    <li class="site-nav__item button"> <a href="signin.html">Sign Out</a></li>
+                    <li class="site-nav__item button red"> <a href="signin.html">Sign Out</a></li>
             </nav>
         </header>
         <main>
@@ -37,6 +37,43 @@
                 <div id="home" class="tabcontent">
                     <h2>Welcome</h2>
                     <p>This is your reports overview</p>
+                    <div>
+                        <div class="card">
+                            <div class="card__heading">
+                                <h2>2</h2>
+                                <p>Number of Reports in Drafts</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__heading">
+                                <h2>3</h2>
+                                <p>Number of Reports currently under Investigation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card">
+                            <div class="card__heading">
+                                <h2>3</h2>
+                                <p>Number of Reports Rejected</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__heading">
+                                <h2>2</h2>
+                                <p>Number of Reports Resolved</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card">
+                            <div class="card__heading">
+                                <h2>10</h2>
+                                <p>Total number of reports submitted</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div id="create" class="tabcontent">
                     <h2>Create Report</h2>
@@ -44,7 +81,7 @@
                     <form action="#" class="form">
 
                         <div class="form__group">
-                            <p>Is this report a red flag or an intervention record</p>
+                            <h5>Is this report a red flag or an intervention record</h5>
                             <input type="radio" name="record-type" value="red-flag"> Red-Flag<br>
                             <input type="radio" name="record-type" value="intervention"> Intervention<br>
                         </div>
@@ -60,14 +97,19 @@
                         </div>
 
                         <div class="form__group">
-                            <input type="location" name="location" placeholder="Location" id="location" class="form__input required">
-                            <label for="location" class="form__label">Location</label>
+                            <h5>Location of incident</h5>
+                            <p>You can easily click on the location of the incident <br>you wish to report on the map below
+                                <br> or edit the value of the coordinates in the form provided</p>
+                            <div id="map"></div>
+                            <input type="text" name="location" placeholder="Location Coordinates (latitude, longitude)" id="location" class="form__input required">
+                            <label for="subject" class="form__label">Location Coordinates</label>
+                            <p id="address"></p>
                         </div>
 
                         <div class="form__group">
-                            <p>
-                                Upload an image/video to subststantiate your report
-                            </p>
+                            <h5>
+                                Upload an image/video to subststantiate your report (optional)
+                            </h5>
                             Select file: <input type="file" name="myFile">
                         </div>
                         <div>
@@ -80,15 +122,325 @@
                 <div id="update" class="tabcontent">
                     <h2>Update Report</h2>
                     <p>You omitted something or you want to add something before your reports are investigated? We are for you</p>
+                    <div class="flex-container">
+                        <div class="card">
+                            <p class="card__status">Draft</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a href="">View More Details</a> </p>
+                            <p class="card__details">
+                                Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+                            <a href="#" class="button button--alt update-button">
+                                Update Report
+                            </a>
+                            <div class="modal">
+
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <form action="#" class="form update-modal">
+
+                                        <div class="form__group">
+                                            <h5>Is this report a red flag or an intervention record</h5>
+                                            <input type="radio" name="record-type" value="red-flag"> Red-Flag<br>
+                                            <input type="radio" checked name="record-type" value="intervention"> Intervention<br>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <input type="text" value="Urgent Need to repair Road" name="subject" placeholder="Subject of the report" id="subject" class="form__input required">
+                                            <label for="subject" class="form__label">Subject of the report</label>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <textarea class="form__textarea" value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda!" name="details" id="details" placeholder="Details of the report"></textarea>
+                                            <label for="details" class="form__label">Details of the report</label>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <h5>Location of incident</h5>
+                                            <input type="text" name="location" placeholder="Location Coordinates (latitude, longitude)" id="location" class="form__input required">
+                                            <label for="subject" class="form__label">Location Coordinates</label>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <h5>
+                                                Upload an image/video to subststantiate your report (optional)
+                                            </h5>
+                                            Select file: <input type="file" name="myFile">
+                                        </div>
+                                        <div>
+                                            <a href="#" class="button button--alt">Update Record</a>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card">
+                            <p class="card__status">Draft</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                                <a class="" href="">View More Details</a>
+                            </p>
+                            <p class="card__details">
+                                Alausa, Ikeja, Nigeria.
+                            </p>
+                            <a href="#" class="button button--alt update-button">
+                                Update Report
+                            </a>
+                            <!-- https://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+                            <div class="modal">
+
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <form action="#" class="form update-modal">
+
+                                        <div class="form__group">
+                                            <h5>Is this report a red flag or an intervention record</h5>
+                                            <input type="radio" checked name="record-type" value="red-flag"> Red-Flag<br>
+                                            <input type="radio" name="record-type" value="intervention"> Intervention<br>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <input type="text" value="Possible Corruption Case at Alawusa" name="subject" placeholder="Subject of the report" id="subject" class="form__input required">
+                                            <label for="subject" class="form__label">Subject of the report</label>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <textarea class="form__textarea" name="details" id="details" placeholder="Details of the report"></textarea>
+                                            <label for="details" class="form__label">Details of the report</label>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <h5>Location of incident</h5>
+                                            <input type="text" name="location" placeholder="Location Coordinates (latitude, longitude)" id="location" class="form__input required">
+                                            <label for="subject" class="form__label">Location Coordinates</label>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <h5>
+                                                Upload an image/video to subststantiate your report (optional)
+                                            </h5>
+                                            Select file: <input type="file" name="myFile">
+                                        </div>
+                                        <div>
+                                            <a href="#" class="button button--alt">Update Record</a>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="card">
+                            <p class="card__status">Draft</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__details">
+                                Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+                            <a href="#" class="button button--alt update-button">
+                                Update Report
+                            </a>
+                            <div class="modal">
+
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <form action="#" class="form update-modal">
+
+                                        <div class="form__group">
+                                            <h5>Is this report a red flag or an intervention record</h5>
+                                            <input type="radio" checked name="record-type" value="red-flag"> Red-Flag<br>
+                                            <input type="radio" name="record-type" value="intervention"> Intervention<br>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <input type="text" value="Dollars found in abandoned Building" name="subject" placeholder="Subject of the report" id="subject" class="form__input required">
+                                            <label for="subject" class="form__label">Subject of the report</label>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <textarea class="form__textarea" name="details" id="details" placeholder="Details of the report"></textarea>
+                                            <label for="details" class="form__label">Details of the report</label>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <h5>Location of incident</h5>
+                                            <input type="text" name="location" placeholder="Location Coordinates (latitude, longitude)" id="location" class="form__input required">
+                                            <label for="subject" class="form__label">Location Coordinates</label>
+                                        </div>
+
+                                        <div class="form__group">
+                                            <h5>
+                                                Upload an image/video to subststantiate your report (optional)
+                                            </h5>
+                                            Select file: <input type="file" name="myFile">
+                                        </div>
+                                        <div>
+                                            <a href="#" class="button button--alt">Update Record</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
                 <div id="delete" class="tabcontent">
                     <h2>Delete Report</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, fugit exercitationem.</p>
+                    <div class="flex-container">
+                        <div class="card">
+                            <p class="card__status">Draft</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a href="">View More Details</a> </p>
+                            <p class="card__details">
+                                Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+                            <a href="#" class="button button--alt">
+                                Delete Report
+                            </a>
+
+
+                        </div>
+                        <div class="card">
+                            <p class="card__status">Draft</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                                <a class="" href="">View More Details</a>
+                            </p>
+                            <p class="card__details">
+                                Alausa, Ikeja, Nigeria.
+                            </p>
+                            <a href="#" class="button button--alt">
+                                    Delete Report
+                                </a>
+                            <!-- https://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+
+                        </div>
+                        <div class="card">
+                            <p class="card__status">Draft</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__details">
+                                Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+                            <a href="#" class="button button--alt">
+                                    Delete Report
+                                </a>
+
+
+                        </div>
+                    </div>
                 </div>
                 <div id="view" class="tabcontent">
                     <h2>View Reports</h2>
                     <p>Here is a list of your previously submitted reports.</p>
+                    <div class="flex-container">
+                        <div class="card">
+                            <p class="card__status">Under Investigation</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__details">
+                                Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                        <div class="card">
+                            <p class="card__status">Draft</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                                <a class="" href="">View More Details</a>
+                            </p>
+                            <p class="card__details">
+                                Alausa, Ikeja, Nigeria.
+                            </p>
+                            <!-- https://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+
+                        </div>
+                        <div class="card">
+                            <p class="card__status green">Resolved</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__details">
+                                Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                    </div>
+                    <div class="flex-container">
+                        <div class="card">
+                            <p class="card__status">Under Investigation</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__details">
+                                Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                        <div class="card">
+                            <p class="card__status">Draft</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                                <a class="" href="">View More Details</a>
+                            </p>
+                            <p class="card__details">
+                                Alausa, Ikeja, Nigeria.
+                            </p>
+                            <!-- https://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+
+                        </div>
+                        <div class="card">
+                            <p class="card__status green">Resolved</p>
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__details">
+                                Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
 
@@ -107,7 +459,7 @@
             </div>
 
         </footer>
-        <a class="button go-to-top" href="#">
+        <a class="go-to-top" href="#">
             <svg class="icon icon-circle-up"><use xlink:href="#icon-circle-up"></use></svg>
         </a>
 
@@ -115,6 +467,10 @@
 
     </div>
     <script src="js/script.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwiB2TC3HMmVi9N3182wh69MKnIOYQ0Gc&callback=initMap"></script>
+
+
 </body>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
