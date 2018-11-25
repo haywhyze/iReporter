@@ -30,6 +30,18 @@
     background: green !important;
 }
 
+.blue {
+    background: blue !important;
+}
+
+.grey {
+    background: grey !important;
+}
+
+.red {
+    background: red !important;
+}
+
 body {
     /* background: url('../img/Bad-Roads.jpg') no-repeat center center fixed;
     background-size: cover; */

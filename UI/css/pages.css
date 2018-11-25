@@ -204,7 +204,8 @@
     display: none;
 }
 
-#home {
+#home,
+#draft {
     display: block;
 }
 
