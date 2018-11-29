@@ -83,7 +83,7 @@ describe('Red Flags', () => {
         .get('/api/v1/red-flags/1')
         .end((err, res) => {
           expect(res.status).to.equal(200);
-          expect(res.body.redFlags.id).to.equal(1);
+          expect(res.body.redFlag.id).to.equal(1);
           done();
         });
     });
