@@ -1,0 +1,46 @@
+{
+    "name": "ireporter",
+    "version": "1.0.0",
+    "description": "iReporter enables  any/every citizen to bring any form of corruption to the notice of appropriate authorities and the  general public. Users can also report on things that needs government intervention",
+    "main": "app.js",
+    "scripts": {
+        "test": "mocha ./api/tests/* --require babel-core/register --exit",
+        "start": "node_modules/.bin/nodemon app.js --exec babel-node --"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/haywhyze/iReporter.git"
+    },
+    "keywords": [
+        "journalism",
+        "citizen",
+        "corruption",
+        "api",
+        "node",
+        "express"
+    ],
+    "author": "Yusuf Ayo Abdulkarim",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/haywhyze/iReporter/issues"
+    },
+    "homepage": "https://github.com/haywhyze/iReporter#readme",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
+        "moment": "^2.22.2"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-watch": "^2.0.7",
+        "chai": "^4.2.0",
+        "chai-http": "^4.2.0",
+        "coffeescript": "^2.3.2",
+        "eslint": "^5.9.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-plugin-import": "^2.14.0",
+        "mocha": "^5.2.0",
+        "nodemon": "^1.18.6"
+    }
+}
