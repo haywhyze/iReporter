@@ -1,19 +1,221 @@
+/* eslint-disable no-unused-expressions */
 import chai from 'chai';
-import { describe, it } from 'mocha';
+import { describe, it, beforeEach } from 'mocha';
 import chaiHttp from 'chai-http';
+import moment from 'moment';
+import data from '../models/red-flag';
 import app from '../../app';
 
-const should = chai.should();
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
-describe('GET /api/v1/', () => {
-  it('should get the homepage', (done) => {
-    chai.request(app)
-      .get('/api/v1/red-flags')
-      .end((err, res) => {
-        res.should.have.status(200);
-        done();
+const dataLength = data.length;
+
+describe('Red Flags', () => {
+  beforeEach((done) => {
+    // check if test has added to the data structure records
+    // if true, return to original state.
+    if (data.length > 1) {
+      data.splice(1, data.length - 1);
+      /* eslint-disable-next-line brace-style */
+    }
+    // check if test has deleted the inital seeded data
+    // if true, re-seed.
+    else if (data.length === 0) {
+      data.push({
+        id: 1,
+        subject: 'Need for Urgent Road Repair',
+        type: 'intervention',
+        location: '(6.593404442689329, 3.364960622142803)',
+        status: 'under investigation',
+        comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda!',
+        createdBy: 1,
+        createdOn: moment().format('LLLL'),
       });
+    }
+    done();
+  });
+  describe('GET /api/v1/', () => {
+    it('should get the homepage', (done) => {
+      chai.request(app)
+        .get('/api/v1/')
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.exist;
+          done();
+        });
+    });
+  });
+
+  describe('GET /api/v1/red-flags', () => {
+    it('should get all red-flags if records exist', (done) => {
+      chai.request(app)
+        .get('api/v1/red-flags')
+        .end((err, res) => {
+          expect(res).to.exist;
+          expect(res.status).to.equal(200);
+          expect(res.body.redFlags.length).to.equal(dataLength);
+          done();
+        });
+    });
+    it('should indicate if there are no red flag records to display', (done) => {
+      const tempData = data.splice(0, data.length);
+      chai.request(app)
+        .get('api/v1/red-flags')
+        .end((err, res) => {
+          expect(res).to.exist;
+          expect(res.status).to.equal(200);
+          expect(res.body.redFlags.length).to.equal(0);
+          data.splice(0, 0, ...tempData);
+          done();
+        });
+    });
+  });
+
+  describe('GET /api/v1/red-flags/<red-flag-id>', () => {
+    it('should get a specific red-flag if ID exist', (done) => {
+      chai.request(app)
+        .get('api/v1/red-flags/1')
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body.redFlags.id).to.equal(1);
+          done();
+        });
+    });
+    it('should send a 404 error if ID does not exist', (done) => {
+      chai.request(app)
+        .get('api/v1/red-flags/1')
+        .end((err, res) => {
+          expect(res.status).to.equal(404);
+          done();
+        });
+    });
+    it('should send a 400 error if ID is not valid', (done) => {
+      chai.request(app)
+        .get('api/v1/red-flags/1yut')
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          done();
+        });
+    });
+  });
+
+  describe('POST /api/v1/red-flags', () => {
+    it('should create a new red flag if all field are filled appropriately', (done) => {
+      chai.request(app)
+        .post('api/v1/red-flags')
+        .send({
+          subject: 'Possible Corruption at Lagos Revenue Office',
+          comment: 'lorem ipsum dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet id donec ultrices tincidunt arcu non sodales neque sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in',
+          type: 'red-flag',
+          location: '(6.620872012064693, 3.3602339029312134)',
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(201);
+          expect(res.body.message).to.equal('Created red-flag record');
+          expect(res.body.redFlags.id).to.equal(dataLength + 1);
+          done();
+        });
+    });
+    it('should not create a new red flag if comment field is empty or absent', (done) => {
+      chai.request(app)
+        .post('api/v1/red-flags')
+        .send({
+          subject: 'Possible Corruption at Lagos Revenue Office',
+          type: 'red-flag',
+          location: '(6.620872012064693, 3.3602339029312134)',
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body.error).to.exist;
+          expect(res.body.error).to.equal('Comment field missing');
+          expect(data.length).to.equal(dataLength);
+          done();
+        });
+    });
+    it('should not create a new red flag if location field is empty or absent', (done) => {
+      chai.request(app)
+        .post('api/v1/red-flags')
+        .send({
+          subject: 'Possible Corruption at Lagos Revenue Office',
+          type: 'red-flag',
+          comment: 'lorem ipsum dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet id donec ultrices tincidunt arcu non sodales neque sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in',
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body.error).to.exist;
+          expect(res.body.error).to.equal('Location field missing');
+          expect(data.length).to.equal(dataLength);
+          done();
+        });
+    });
+    it('should not create a new red flag if type field is absent or empty', (done) => {
+      chai.request(app)
+        .post('api/v1/red-flags')
+        .send({
+          subject: 'Possible Corruption at Lagos Revenue Office',
+          comment: 'lorem ipsum dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet id donec ultrices tincidunt arcu non sodales neque sodales ut etiam sit amet nisl purus in mollis nunc sed id semper risus in',
+          location: '(6.620872012064693, 3.3602339029312134)',
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body.error).to.exist;
+          expect(res.body.error).to.equal('Location field missing');
+          expect(data.length).to.equal(dataLength);
+          done();
+        });
+    });
+    it('should not create a new red flag if comment field is too short or too long', (done) => {
+      chai.request(app)
+        .post('api/v1/red-flags')
+        .send({
+          subject: 'Possible Corruption at Lagos Revenue Office',
+          type: 'red-flag',
+          comment: 'lorem ipsum',
+          location: '(6.620872012064693, 3.3602339029312134)',
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body.error).to.exist;
+          expect(res.body.error).to.equal('Comment too short or too long');
+          expect(data.length).to.equal(dataLength);
+          done();
+        });
+    });
+    it('should not create a new red flag if location is not valid Lat Long Coordinates', (done) => {
+      chai.request(app)
+        .post('api/v1/red-flags')
+        .send({
+          subject: 'Possible Corruption at Lagos Revenue Office',
+          type: 'red-flag',
+          comment: 'lorem ipsum',
+          location: '(6.620872012064693, -190)',
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body.error).to.exist;
+          expect(res.body.error).to.equal('Lat Long coordinates not valid');
+          expect(data.length).to.equal(dataLength);
+          done();
+        });
+    });
+    it('should not create a new red flag if type is not an accepted value', (done) => {
+      chai.request(app)
+        .post('api/v1/red-flags')
+        .send({
+          subject: 'Possible Corruption at Lagos Revenue Office',
+          type: 'blue-flag',
+          comment: 'lorem ipsum',
+          location: '(6.620872012064693, 3.3602339029312134)',
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body.error).to.exist;
+          expect(res.body.error).to.equal('type not accepted value');
+          expect(data.length).to.equal(dataLength);
+          done();
+        });
+    });
   });
 });
