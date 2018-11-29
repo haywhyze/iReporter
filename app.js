@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-// import router from './api/routes';
+import router from './api/routes';
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.get('/api/v1/', (req, res) => {
   res.status(200).send(welcome);
 });
 
-// app.use(router);
+app.use(router);
 
 app.all('*', (req, res) => {
   res.status(404).send('<h2>Well!!! This is Embarrasing</h2><p>There are no resources here. Check the documentation here for valid routes</p>');
