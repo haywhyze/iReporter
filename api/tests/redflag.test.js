@@ -94,7 +94,7 @@ describe('Red Flags', () => {
         .end((err, res) => {
           expect(res.status).to.equal(404);
           expect(res.body.error).to.exist;
-          expect(res.body.error).to.equal('Record ID does not exist');
+          expect(res.body.error).to.equal('red-flag record ID provided does not exist');
           done();
         });
     });
@@ -105,7 +105,7 @@ describe('Red Flags', () => {
         .end((err, res) => {
           expect(res.status).to.equal(400);
           expect(res.body.error).to.exist;
-          expect(res.body.error).to.equal('Record ID value is invalid');
+          expect(res.body.error).to.equal('red-flag ID value provided is not valid');
           done();
         });
     });
@@ -280,7 +280,7 @@ describe('Red Flags', () => {
           location: '(6.620872012064693, 3.3561009169617364)',
         }).end((err, res) => {
           expect(res.status).to.equal(404);
-          expect(res.body.error).to.equal('redflag record ID provided does not exist');
+          expect(res.body.error).to.equal('red-flag record ID provided does not exist');
           done();
         });
     });
@@ -343,7 +343,7 @@ describe('Red Flags', () => {
           comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!',
         }).end((err, res) => {
           expect(res.status).to.equal(404);
-          expect(res.body.error).to.equal('redflag record ID provided does not exist');
+          expect(res.body.error).to.equal('red-flag record ID provided does not exist');
           done();
         });
     });
@@ -378,7 +378,7 @@ describe('Red Flags', () => {
         .delete('/api/v1/red-flags/12')
         .end((err, res) => {
           expect(res.status).to.equal(404);
-          expect(res.body.error).to.equal('redflag record ID provided does not exist');
+          expect(res.body.error).to.equal('red-flag record ID provided does not exist');
           done();
         });
     });
