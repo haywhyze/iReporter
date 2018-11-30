@@ -367,7 +367,7 @@ describe('Red Flags', () => {
       chai.request(app)
         .delete('/api/v1/red-flags/1')
         .end((err, res) => {
-          expect(res.status).to.equal('200');
+          expect(res.status).to.equal(200);
           expect(res.body.message).to.equal('red-flag record has been deleted');
           done();
         });

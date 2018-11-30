@@ -29,6 +29,18 @@ class RedFlagController {
         redFlag,
       });
   }
+
+  static delete(req, res) {
+    const id = Number(req.params.id);
+    const redFlagIndex = data.findIndex(e => e.id === id);
+    const redFlag = data.splice(redFlagIndex, 1);
+    return res.status(200)
+      .send({
+        success: 'true',
+        message: 'red-flag record has been deleted',
+        redFlag,
+      });
+  }
 }
 
 
