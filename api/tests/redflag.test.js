@@ -243,7 +243,7 @@ describe('Red Flags', () => {
         .send({
           location: '(6.5927921165779075, 3.3561009169617364)',
         }).end((err, res) => {
-          expect(res.status).to.equal(204);
+          expect(res.status).to.equal(200);
           expect(res.body.message).to.equal('Updated red-flag record\'s location');
           done();
         });
@@ -306,7 +306,7 @@ describe('Red Flags', () => {
         .send({
           comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!',
         }).end((err, res) => {
-          expect(res.status).to.equal(204);
+          expect(res.status).to.equal(200);
           expect(res.body.message).to.equal('Updated red-flag record\'s comment');
           done();
         });
