@@ -1,6 +1,7 @@
 import moment from 'moment';
 import data from '../models/red-flag';
 // import validID from '../helpers';
+import { update } from '../helpers';
 
 class RedFlagController {
   static getAll(req, res) {
@@ -53,26 +54,11 @@ class RedFlagController {
   }
 
   static updateLocation(req, res) {
-    const id = Number(req.params.id);
-    const redFLagIndex = data.findIndex(x => x.id === id);
-    data[redFLagIndex].location = req.body.location;
-    return res.status(200)
-      .send({
-        success: 'true',
-        message: 'Updated red-flag record\'s location',
-      });
+    return update(req, res, 'location');
   }
 
   static updateComment(req, res) {
-    const id = Number(req.params.id);
-    const redFLagIndex = data.findIndex(x => x.id === id);
-    data[redFLagIndex].comment = req.body.comment;
-
-    return res.status(200)
-      .send({
-        success: 'true',
-        message: 'Updated red-flag record\'s comment',
-      });
+    return update(req, res, 'comment');
   }
 
   static delete(req, res) {

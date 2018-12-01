@@ -1,4 +1,28 @@
-import joinStrings from '../helpers';
+import { joinStrings } from '../helpers';
+
+const populateError = (req) => {
+  const error = [];
+  if (!req.body.comment) {
+    error.push('comment');
+  }
+  if (!req.body.location) {
+    error.push('location');
+  }
+  if (!req.body.type) {
+    error.push('type');
+  }
+  return error;
+};
+
+const setErrorMsg = (error) => {
+  let errorMsg;
+  if (error.length === 1) {
+    errorMsg = `No values provided for ${error[0]}`;
+  } else {
+    errorMsg = `No values provided for ${joinStrings(error)}`;
+  }
+  return errorMsg;
+};
 
 const isEmpty = (req, res, next) => {
   let path = req.url.split('/');
@@ -13,23 +37,10 @@ const isEmpty = (req, res, next) => {
         });
     }
   } else {
-    const error = [];
-    let errorMsg;
-    if (!req.body.comment) {
-      error.push('comment');
-    }
-    if (!req.body.location) {
-      error.push('location');
-    }
-    if (!req.body.type) {
-      error.push('type');
-    }
+    const error = populateError(req);
+
     if (error[0]) {
-      if (error.length === 1) {
-        errorMsg = `No values provided for ${error[0]}`;
-      } else {
-        errorMsg = `No values provided for ${joinStrings(error)}`;
-      }
+      const errorMsg = setErrorMsg(error);
       return res.status(400)
         .send({
           success: 'false',
