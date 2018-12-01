@@ -1,3 +1,5 @@
+import data from '../models/red-flag';
+
 const joinStrings = (strings) => {
   const stringArray = strings.map(x => `${x},`);
   stringArray[stringArray.length - 1] = `and ${stringArray[stringArray.length - 1].slice(0, -1)}`;
@@ -5,4 +7,16 @@ const joinStrings = (strings) => {
   return stringArray.join(' ');
 };
 
-export default joinStrings;
+const update = (req, res, param) => {
+  const id = Number(req.params.id);
+  const redFLagIndex = data.findIndex(x => x.id === id);
+  data[redFLagIndex][param] = req.body[param];
+  return res.status(200)
+    .send({
+      success: 'true',
+      message: `Updated red-flag record's ${param}`,
+    });
+};
+
+
+export { joinStrings, update };
