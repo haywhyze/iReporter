@@ -1,3 +1,4 @@
+import moment from 'moment';
 import data from '../models/red-flag';
 // import validID from '../helpers';
 
@@ -26,6 +27,28 @@ class RedFlagController {
       .send({
         success: 'true',
         message: 'red-flag record retrieved succesfully',
+        redFlag,
+      });
+  }
+
+  static create(req, res) {
+
+    const redFlag = {
+      id: data.length + 1,
+      subject: req.body.subject || '',
+      type: req.body.type,
+      location: req.body.location,
+      status: 'draft',
+      comment: req.body.comment,
+      createdBy: 1,
+      createdOn: moment().format('LLLL'),
+    };
+
+    data.push(redFlag);
+    return res.status(201)
+      .send({
+        success: true,
+        message: 'Created red-flag record',
         redFlag,
       });
   }

@@ -124,7 +124,7 @@ describe('Red Flags', () => {
         .end((err, res) => {
           expect(res.status).to.equal(201);
           expect(res.body.message).to.equal('Created red-flag record');
-          expect(res.body.redFlags.id).to.equal(dataLength + 1);
+          expect(res.body.redFlag.id).to.equal(dataLength + 1);
           done();
         });
     });
@@ -140,7 +140,7 @@ describe('Red Flags', () => {
         .end((err, res) => {
           expect(res.status).to.equal(400);
           expect(res.body.error).to.exist;
-          expect(res.body.error).to.equal('Comment field missing');
+          expect(res.body.error).to.include('comment');
           expect(data.length).to.equal(dataLength);
           done();
         });
@@ -157,7 +157,7 @@ describe('Red Flags', () => {
         .end((err, res) => {
           expect(res.status).to.equal(400);
           expect(res.body.error).to.exist;
-          expect(res.body.error).to.equal('Location field missing');
+          expect(res.body.error).to.include('location');
           expect(data.length).to.equal(dataLength);
           done();
         });
@@ -174,7 +174,7 @@ describe('Red Flags', () => {
         .end((err, res) => {
           expect(res.status).to.equal(400);
           expect(res.body.error).to.exist;
-          expect(res.body.error).to.equal('Location field missing');
+          expect(res.body.error).to.include('type');
           expect(data.length).to.equal(dataLength);
           done();
         });
@@ -228,7 +228,7 @@ describe('Red Flags', () => {
         .end((err, res) => {
           expect(res.status).to.equal(400);
           expect(res.body.error).to.exist;
-          expect(res.body.error).to.equal('type not accepted value');
+          expect(res.body.error).to.equal('Type not of accepted value');
           expect(data.length).to.equal(dataLength);
           done();
         });
@@ -268,7 +268,7 @@ describe('Red Flags', () => {
           location: '(6.620872012064693, -190)',
         }).end((err, res) => {
           expect(res.status).to.equal(400);
-          expect(res.body.error).to.equal('Lat Long value provided is invalid');
+          expect(res.body.error).to.equal('Lat Long coordinates not valid');
           done();
         });
     });
@@ -331,7 +331,7 @@ describe('Red Flags', () => {
           comment: 'Too short',
         }).end((err, res) => {
           expect(res.status).to.equal(400);
-          expect(res.body.error).to.equal('Comment is too short or too long');
+          expect(res.body.error).to.equal('Comment too short or too long');
           done();
         });
     });
