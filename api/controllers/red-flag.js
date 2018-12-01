@@ -32,7 +32,6 @@ class RedFlagController {
   }
 
   static create(req, res) {
-
     const redFlag = {
       id: data.length + 1,
       subject: req.body.subject || '',
@@ -50,6 +49,29 @@ class RedFlagController {
         success: true,
         message: 'Created red-flag record',
         redFlag,
+      });
+  }
+
+  static updateLocation(req, res) {
+    const id = Number(req.params.id);
+    const redFLagIndex = data.findIndex(x => x.id === id);
+    data[redFLagIndex].location = req.body.location;
+    return res.status(200)
+      .send({
+        success: 'true',
+        message: 'Updated red-flag record\'s location',
+      });
+  }
+
+  static updateComment(req, res) {
+    const id = Number(req.params.id);
+    const redFLagIndex = data.findIndex(x => x.id === id);
+    data[redFLagIndex].comment = req.body.comment;
+
+    return res.status(200)
+      .send({
+        success: 'true',
+        message: 'Updated red-flag record\'s comment',
       });
   }
 
