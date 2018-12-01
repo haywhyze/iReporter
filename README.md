@@ -1,2 +1,2 @@
-# iReporter
+# iReporter  [![Build Status](https://travis-ci.com/haywhyze/iReporter.svg?branch=develop)](https://travis-ci.com/haywhyze/iReporter) [![Coverage Status](https://coveralls.io/repos/github/haywhyze/iReporter/badge.svg?branch=develop)](https://coveralls.io/github/haywhyze/iReporter?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/64ea93f642a18de72626/maintainability)](https://codeclimate.com/github/haywhyze/iReporter/maintainability)
 iReporter enables  any/every citizen to bring any form of corruption to the notice of appropriate authorities and the  general public. Users can also report on things that needs government intervention
