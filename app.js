@@ -7,8 +7,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/api/v1/', (req, res) => {
-  const welcome = '<h1>Welcome to iReporter API version 1.0.0. The application is live on here';
+app.get('/', (req, res) => {
+  const welcome = '<h1>Welcome to iReporter API version 1.0.0. Read the documentation here';
   res.status(200).send(welcome);
 });
 
