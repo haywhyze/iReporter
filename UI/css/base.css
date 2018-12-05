@@ -27,11 +27,11 @@
 }
 
 .green {
-    background: green !important;
+    background: #5ca03b !important;
 }
 
 .blue {
-    background: blue !important;
+    background: #1c8eff !important;
 }
 
 .grey {
@@ -39,7 +39,7 @@
 }
 
 .red {
-    background: red !important;
+    background: var(--color-secondary) !important;
 }
 
 body {
@@ -68,7 +68,7 @@ body *+* {
 
 a {
     text-decoration: none;
-    color: var(--color-tertiary);
+    color: var(--color-secondary);
 }
 
 h2:not(.hero__title) {
@@ -83,7 +83,7 @@ h2:not(.hero__title) {
     text-shadow: 3px 5px 5px rgba(0, 0, 0, .3);
 }
 
-#map {
+.map {
     height: 20rem;
     width: 30rem;
 }
@@ -113,13 +113,20 @@ section {
 .go-to-top {
     position: fixed;
     z-index: 5;
-    top: 83vh;
-    left: 87vw;
-    border-radius: 50%;
+    bottom: 8rem;
+    right: 1rem;
+    opacity: .8;
+    background-color: rgba(240, 240, 240, .8);
+    padding-top: .15rem;
 }
 
 .go-to-top:hover {
     transform: translateY(-4px);
+    opacity: 1;
+}
+
+.material-icons {
+    font-size: inherit;
 }
 
 .icon {
@@ -131,7 +138,6 @@ section {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: rgba(32, 32, 32, 1);
 }
 
 @keyframes moveInLeft {
