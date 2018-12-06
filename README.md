@@ -4,7 +4,7 @@
 ---
 iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public. Users can also report on things that needs government intervention
 
-### Implemented Features
+## Implemented Features
 
 - Users can create a red-flag record.
 - Users can fetch all red-flag red-flag records.
@@ -15,13 +15,13 @@ iReporter enables any/every citizen to bring any form of corruption to the notic
 
 ---
 
-### Prerequisites
+## Prerequisites
 
 [NodeJS](https://nodejs.org/) (>8.11.3) and [NPM](https://www.npmjs.com/) (>5.6.0) are required to run this application.
 
 ---
 
-### Installation
+## Installation
 
 - Clone this repository and navigate into it.
 
@@ -37,25 +37,26 @@ iReporter enables any/every citizen to bring any form of corruption to the notic
 
 ---
 
-### Documentation
+## Documentation
 
-This application is deployed on [heroku](https://ireporter-andela.herokuapp.com/) with the following endpoints accessible 
-|Method|Functionality|Endpoint |
+This application is deployed on [heroku](https://ireporter-andela.herokuapp.com/) with the following endpoints accessible
+
+|Method|Functionality|Endpoint|
 |--|--|--|
-|GET */red-flags*  |Get all red-flags  |`api/v1/red-flags`  |
-|GET */red-flags/\<red-flag-id\>* | Get a specific red-flag id| `api/v1/red-flags/:id`
+|GET */red-flags*|Get all red-flags|`api/v1/red-flags`|
+|GET */red-flags/\<red-flag-id\>*| Get a specific red-flag id| `api/v1/red-flags/:id`
 |POST */red-flags/* | create a specific red-flag| `api/v1/red-flags/`
 |PATCH */red-flags/\<red-flag-id\>/location* | Change the location of a specific red-flag id| `api/v1/red-flags/:id/location`
 |PATCH */red-flags/\<red-flag-id\>/comment* | Change the comment of a specific red-flag id| `api/v1/red-flags/:id/comment`
 |DELETE */red-flags/\<red-flag-id\>* | Delete a specific red-flag id| `api/v1/red-flags/:id/`
 
-#### Required Parameters
+### Required Parameters
 
-##### POST */red-flags*
+#### POST */red-flags*
 
 ```JSON
 {
-  "subject":  "[Subject of the red-flag/intervention incidet]"(optional),
+  "subject":  "[Subject of the red-flag/intervention incidet] [optional]",
   "type":  "[red-flag/intervention]",
   "location":  "[Valid latLng coordinates e.g '(6.593404442689329, 3.364960622142803)' with or without the brackets]",
   "comment":  "details of the red-flag/intervention incident not less than 50 characters nor more than 420 characters"
@@ -80,11 +81,11 @@ This application is deployed on [heroku](https://ireporter-andela.herokuapp.com/
 
 ---
 
-### Testing the Application Locally
+## Testing the Application Locally
 
 If the project has been cloned and navigated into as specified [above](#installation), you can run tests...
 
-#### Using POSTMAN 
+### Using POSTMAN 
 
 If you do not have POSTMAN installed, download [here](https://www.getpostman.com/)
 
@@ -92,7 +93,7 @@ If you do not have POSTMAN installed, download [here](https://www.getpostman.com
 
 - On POSTMAN navigate to `localhost:3000/` and use the documentation [above](#documentation) as guide to access the endpoints.
 
-#### Using MOCHA
+### Using MOCHA
 
 If you do not have mocha installed, you can install using npm with:
 `npm -i mocha -g`
@@ -101,7 +102,7 @@ then you can run tests with:
 
 ---
 
-### Technologies Used
+## Technologies Used
 
 - [NodeJS](https://nodejs.org/)
 
@@ -115,13 +116,14 @@ then you can run tests with:
 
 ---
 
-### Acknowledgements
+## Acknowledgements
 
 [Chukwuemeka](https://twitter.com/3m3kalionel)
+
 [Andela](https://andela.com/)
 
 ---
 
-### Author
+## Author
 
 [Yusuf Ayo Abdulkarim](https://twitter.com/haywhyze)
