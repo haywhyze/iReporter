@@ -13,8 +13,11 @@ const update = (req, res, param) => {
   data[redFLagIndex][param] = req.body[param];
   return res.status(200)
     .send({
-      success: 'true',
-      message: `Updated red-flag record's ${param}`,
+      status: 200,
+      data: [{
+        id,
+        message: `Updated red-flag record's ${param}`,
+      }],
     });
 };
 

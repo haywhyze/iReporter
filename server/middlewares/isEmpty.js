@@ -32,7 +32,7 @@ const isEmpty = (req, res, next) => {
     if (!req.body[path]) {
       return res.status(400)
         .send({
-          success: 'false',
+          status: 400,
           error: `No ${path} value provided`,
         });
     }
@@ -43,7 +43,7 @@ const isEmpty = (req, res, next) => {
       const errorMsg = setErrorMsg(error);
       return res.status(400)
         .send({
-          success: 'false',
+          status: 400,
           error: errorMsg,
         });
     }

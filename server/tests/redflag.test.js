@@ -58,19 +58,21 @@ describe('Red Flags', () => {
         .end((err, res) => {
           expect(res).to.exist;
           expect(res.status).to.equal(200);
-          expect(res.body.redFlags.length).to.equal(dataLength);
+          expect(res.body.status).to.exist;
+          expect(res.body.data).to.be.an('array');
           done();
         });
     });
 
-    it('should indicate if there are no red flag records to display', (done) => {
+    it('should return empty array if there are no red flag records to display', (done) => {
       data.splice(0, data.length);
       chai.request(app)
         .get('/api/v1/red-flags')
         .end((err, res) => {
           expect(res).to.exist;
           expect(res.status).to.equal(200);
-          expect(res.body.message).to.equal('No red-flags records available.');
+          expect(res.body.status).to.exist;
+          expect(res.body.data).to.eql([]);
           done();
         });
     });
@@ -83,7 +85,8 @@ describe('Red Flags', () => {
         .get('/api/v1/red-flags/1')
         .end((err, res) => {
           expect(res.status).to.equal(200);
-          expect(res.body.redFlag.id).to.equal(1);
+          expect(res.body.status).to.exist;
+          expect(res.body.data[0].id).to.equal(1);
           done();
         });
     });
@@ -93,6 +96,7 @@ describe('Red Flags', () => {
         .get('/api/v1/red-flags/15')
         .end((err, res) => {
           expect(res.status).to.equal(404);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.equal('red-flag record ID provided does not exist');
           done();
@@ -104,6 +108,7 @@ describe('Red Flags', () => {
         .get('/api/v1/red-flags/1yut')
         .end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.equal('red-flag ID value provided is not valid');
           done();
@@ -123,8 +128,9 @@ describe('Red Flags', () => {
         })
         .end((err, res) => {
           expect(res.status).to.equal(201);
-          expect(res.body.message).to.equal('Created red-flag record');
-          expect(res.body.redFlag.id).to.equal(dataLength + 1);
+          expect(res.body.status).to.exist;
+          expect(res.body.data[0].message).to.equal('Created red-flag record');
+          expect(res.body.data[0].id).to.equal(dataLength + 1);
           done();
         });
     });
@@ -139,6 +145,7 @@ describe('Red Flags', () => {
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.include('comment');
           expect(data.length).to.equal(dataLength);
@@ -156,6 +163,7 @@ describe('Red Flags', () => {
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.include('location');
           expect(data.length).to.equal(dataLength);
@@ -173,6 +181,7 @@ describe('Red Flags', () => {
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.include('type');
           expect(data.length).to.equal(dataLength);
@@ -191,6 +200,7 @@ describe('Red Flags', () => {
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.equal('Comment too short or too long');
           expect(data.length).to.equal(dataLength);
@@ -209,6 +219,7 @@ describe('Red Flags', () => {
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.equal('Lat Long coordinates not valid');
           expect(data.length).to.equal(dataLength);
@@ -227,6 +238,7 @@ describe('Red Flags', () => {
         })
         .end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.equal('Type not of accepted value');
           expect(data.length).to.equal(dataLength);
@@ -244,7 +256,9 @@ describe('Red Flags', () => {
           location: '(6.5927921165779075, 3.3561009169617364)',
         }).end((err, res) => {
           expect(res.status).to.equal(200);
-          expect(res.body.message).to.equal('Updated red-flag record\'s location');
+          expect(res.body.status).to.exist;
+          expect(res.body.data[0].id).to.equal(1);
+          expect(res.body.data[0].message).to.equal('Updated red-flag record\'s location');
           done();
         });
     });
@@ -256,6 +270,7 @@ describe('Red Flags', () => {
           location: '',
         }).end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('No location value provided');
           done();
         });
@@ -268,6 +283,7 @@ describe('Red Flags', () => {
           location: '(6.620872012064693, -190)',
         }).end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('Lat Long coordinates not valid');
           done();
         });
@@ -280,6 +296,7 @@ describe('Red Flags', () => {
           location: '(6.620872012064693, 3.3561009169617364)',
         }).end((err, res) => {
           expect(res.status).to.equal(404);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('red-flag record ID provided does not exist');
           done();
         });
@@ -292,6 +309,7 @@ describe('Red Flags', () => {
           location: '(6.620872012064693, 3.3561009169617364)',
         }).end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('red-flag ID value provided is not valid');
           done();
         });
@@ -307,7 +325,9 @@ describe('Red Flags', () => {
           comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!',
         }).end((err, res) => {
           expect(res.status).to.equal(200);
-          expect(res.body.message).to.equal('Updated red-flag record\'s comment');
+          expect(res.body.status).to.exist;
+          expect(res.body.data[0].id).to.be.equal(1);
+          expect(res.body.data[0].message).to.equal('Updated red-flag record\'s comment');
           done();
         });
     });
@@ -319,6 +339,7 @@ describe('Red Flags', () => {
           comment: '',
         }).end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('No comment value provided');
           done();
         });
@@ -331,6 +352,7 @@ describe('Red Flags', () => {
           comment: 'Too short',
         }).end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('Comment too short or too long');
           done();
         });
@@ -343,6 +365,7 @@ describe('Red Flags', () => {
           comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!',
         }).end((err, res) => {
           expect(res.status).to.equal(404);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('red-flag record ID provided does not exist');
           done();
         });
@@ -355,6 +378,7 @@ describe('Red Flags', () => {
           comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!',
         }).end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('red-flag ID value provided is not valid');
           done();
         });
@@ -368,7 +392,8 @@ describe('Red Flags', () => {
         .delete('/api/v1/red-flags/1')
         .end((err, res) => {
           expect(res.status).to.equal(200);
-          expect(res.body.message).to.equal('red-flag record has been deleted');
+          expect(res.body.status).to.exist;
+          expect(res.body.data[0].message).to.equal('red-flag record has been deleted');
           done();
         });
     });
@@ -378,6 +403,7 @@ describe('Red Flags', () => {
         .delete('/api/v1/red-flags/12')
         .end((err, res) => {
           expect(res.status).to.equal(404);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('red-flag record ID provided does not exist');
           done();
         });
@@ -387,6 +413,7 @@ describe('Red Flags', () => {
         .delete('/api/v1/red-flags/shade')
         .end((err, res) => {
           expect(res.status).to.equal(400);
+          expect(res.body.status).to.exist;
           expect(res.body.error).to.equal('red-flag ID value provided is not valid');
           done();
         });
