@@ -91,5 +91,6 @@
     .go-to-top {
         top: 73vh;
         left: 85vw;
+        background: none;
     }
 }

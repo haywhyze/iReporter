@@ -96,10 +96,11 @@ const placeMarkerAndPanTo = (latLng, map) => {
 
 function initMap() {
   let map = document.querySelectorAll('.map');
+    // const location = document.querySelectorAll('.location');
+    // const address = document.querySelectorAll('.address');
   map = Array.from(map);
-  let a;
   map = map.map((e) => {
-    e = new google.maps.Map(e, {
+    d = new google.maps.Map(e, {
       zoom: 13,
       center: {
         lat: 6.605874,
@@ -107,25 +108,14 @@ function initMap() {
       },
     });
 
-    e.addListener('click', (x) => {
+    d.addListener('click', (x) => {
+      let latLng = `(${x.latLng.lat()}, ${x.latLng.lng()})`;
+      e.nextElementSibling.value = latLng;
       clearMarkers();
-      placeMarkerAndPanTo(x.latLng, e);
-      geocodeLatLng(e.latLng);
+      placeMarkerAndPanTo(x.latLng, d);
+      geocodeLatLng(x.latLng);
     })
   });
-
-  const location = document.querySelector('#location');
-  const address = document.querySelector('#address');
-  map.map((x) => {
-    // console.log(x)
-    // x.addListener('click', (e) => {
-    //   console.log(e)
-    //   
-    //   // placeMarkerAndPanTo(e.latLng, x);
-    //   // geocodeLatLng(e.latLng);
-    //   // location.value = `${e.latLng}`;
-    // });
-  })
 }
 
 
