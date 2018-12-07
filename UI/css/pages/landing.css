@@ -37,16 +37,17 @@
 .how {
     background-color: beige;
     padding: 5rem 7rem;
-    margin-top: -10vh;
+    margin-top: -8vh;
 }
 
 .how-icon {
-    height: 2rem;
+    font-size: 3rem;
+    margin-top: 1rem;
 }
 
 .contact-section {
     margin: -1rem 0;
-    padding: 4rem 0;
+    padding: 4rem 5rem;
     background-image: linear-gradient(to right bottom, var(--color-tertiary), var(--color-secondary));
 }
 
@@ -88,7 +89,8 @@
         padding: 5rem .5em;
     }
     .go-to-top {
-        top: 80vh;
-        left: 80vw;
+        top: 73vh;
+        left: 85vw;
+        background: none;
     }
 }
