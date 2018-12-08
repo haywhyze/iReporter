@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Admin | iReporter</title>
+
+</head>
+
+<body class="sign-body">
+
+    <div class="container">
+        <header>
+            <nav class="site-nav">
+                <a href="#"><img class="site-nav__logo" src="img/logo.svg" alt="Logo" srcset=""></a>
+
+                <ul class="site-nav-ul site-nav__right">
+                    <li class="site-nav__item"> Welcome, <a href="#">Yusuf Ayo</a> </li>
+                    <li class="site-nav__item button red"> <a href="signin.html">Sign Out</a></li>
+            </nav>
+        </header>
+        <main>
+
+            <div class="tab">
+                <button data-tab="draft" class="button tablinks active">Draft</button>
+                <button data-tab="rejected" class="button tablinks">Rejected</button>
+                <button data-tab="investigation" class="button tablinks">Under Investigation</button>
+                <button data-tab="resolved" class="button tablinks">Resolved</button>
+                <button data-tab="view" class="button tablinks">View all Reports</button>
+            </div>
+            <div class="profile-container">
+                <div id="draft" class="tabcontent">
+                    <h2>Draft Reports</h2>
+                    <p>These are newly received draft reports</p>
+                    <div class="flex-container">
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status blue">Draft</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+                            <div class="flex-container flex-div">
+                                <a href="" class="button button--alt green">Accept</a>
+                            <a href="" class="button button--alt delete-button red">Reject</a>
+                            </div>
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                            </p>
+                                <p class="card__status blue">Draft</p>
+                            
+                            <p class="card__details">
+                                <i class="material-icons">place</i>Alausa, Ikeja, Nigeria.
+                            </p>
+                            <div class="flex-container flex-div">
+
+                            <a href="" class="button button--alt green">Accept</a>
+                            <a href="" class="button button--alt delete-button red">Reject</a>
+                            </div>
+                            <!-- ttps://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status blue">Draft</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+                            <div class="flex-container flex-div">
+                                <a href="" class="button button--alt green">Accept</a>
+                            <a href="" class="button button--alt delete-button red">Reject</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="rejected" class="tabcontent">
+                    <h2>Rejected</h2>
+                    <p>These are the reports that have been rejected</p>
+                    <div class="flex-container">
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status red">Rejected</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                            </p>
+                                <p class="card__status red">Rejected</p>
+                            
+                            <p class="card__details">
+                                <i class="material-icons">place</i>Alausa, Ikeja, Nigeria.
+                            </p>
+                            <!-- https://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status red">Rejected</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="investigation" class="tabcontent">
+                    <h2>Under Investigation</h2>
+                    <p>These are accepted results under investigaton</p>
+                    <div class="flex-container">
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status grey">Under Investigation</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+                            <a href="" class="button button--alt green">Resolve</a>
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                            </p>
+                                <p class="card__status grey">Under Investigation</p>
+                            
+                            <p class="card__details">
+                                <i class="material-icons">place</i> Alausa, Ikeja, Nigeria.
+                            </p>
+                            <a href="" class="button button--alt green">Resolve</a>
+                            <!-- https://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status grey">Under Investigation</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+                            <a href="" class="button button--alt green">Resolve</a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="resolved" class="tabcontent">
+                    <h2>Resolved</h2>
+                    <p>This is the list of resolved records</p>
+                    <div class="flex-container">
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status green">Resolved</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                            </p>
+                                <p class="card__status green">Resolved</p>
+                            
+                            <p class="card__details">
+                                <i class="material-icons">place</i>  Alausa, Ikeja, Nigeria.
+                            </p>
+                            <!-- https://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status green">Resolved</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div id="view" class="tabcontent">
+                    <h2>View all Reports</h2>
+                    <p>Here is a list of all submitted reports.</p>
+                    <div class="flex-container">
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status grey">Under Investigation</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                            </p>
+                                <p class="card__status blue">Draft</p>
+                            
+                            <p class="card__details">
+                                <i class="material-icons">place</i> Alausa, Ikeja, Nigeria.
+                            </p>
+                            <!-- https://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status green">Resolved</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                    </div>
+                    <div class="flex-container">
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/Bad-Roads.jpg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Urgent Need to repair Road</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status grey">Under Investigation</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/alausa.jpg" alt="Woman taking picture" class="card__picture">
+                            <h5 class="card__heading">Possible Corruption Case at Alawusa</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum soluta facilis cumque culpa delectus, quibusdam minima ducimus, eaque aperiam minus non quam. Ad hic odio, pariatur vero eius asperiores exercitationem!
+                            </p>
+                                <p class="card__status blue">Draft</p>
+                            
+                            <p class="card__details">
+                                <i class="material-icons">place</i> Alausa, Ikeja, Nigeria.
+                            </p>
+                            <!-- https://guardian.ng/property/lagos-in-n3-1b-elephant-cement-house-deal-shops-for-contractors-for-repairs/ -->
+
+
+                        </div>
+                        <div class="card">
+                            
+                            <!-- title/subject(h5), comment(p), location(stylishly), image/video(img/video), status media object? card? -->
+                            <img src="img/images.jpeg" alt="Bad Road in Lagos, Nigeria" class="card__picture">
+                            <h5 class="card__heading">Dollars found in abandoned Building</h5>
+                            <p class="card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda! <a class="" href="">View More Details</a> </p>
+                            <p class="card__status green">Resolved</p>
+                            <p class="card__details">
+                               <i class="material-icons">place</i> Metalbox Rd, Ogba, Ikeja, Nigeria.
+                            </p>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </main>
+        <footer>
+            <div>
+                <nav class="site-nav-foot">
+                    <ul class="site-nav-ul">
+                        <li class="site-nav__item"> <a href="">Terms and Conditions</a> </li>
+                    </ul>
+                    <p class=copy> &copy;2018. Yusuf Ayo.</p>
+                    <a><img class="site-nav__logo" src="img/logo.svg" alt="Logo" srcset=""></a>
+                </nav>
+            </div>
+
+        </footer>
+        <a class="go-to-top" href="#">
+            <svg class="icon icon-circle-up"><use xlink:href="#icon-circle-up"></use></svg>
+        </a>
+
+
+
+    </div>
+    <script src="js/admin.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwiB2TC3HMmVi9N3182wh69MKnIOYQ0Gc&callback=initMap"></script>
+
+
+</body>
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+        <symbol id="icon-circle-up" viewBox="0 0 32 32">
+        <title>circle-up</title>
+        <path d="M0 16c0 8.837 7.163 16 16 16s16-7.163 16-16-7.163-16-16-16-16 7.163-16 16zM29 16c0 7.18-5.82 13-13 13s-13-5.82-13-13 5.82-13 13-13 13 5.82 13 13z"></path>
+        <path d="M22.086 20.914l2.829-2.829-8.914-8.914-8.914 8.914 2.828 2.828 6.086-6.086z"></path>
+        </symbol>
+        </defs>
+        </svg>
+
+</html>
