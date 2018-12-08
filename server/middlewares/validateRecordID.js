@@ -8,7 +8,7 @@ const validateRecordID = (req, res, next) => {
     || String(req.params.id).indexOf('.') !== -1) {
     return res.status(400)
       .send({
-        success: false,
+        status: 400,
         error: 'red-flag ID value provided is not valid',
       });
   }
@@ -16,7 +16,7 @@ const validateRecordID = (req, res, next) => {
   if (!found) {
     return res.status(404)
       .send({
-        success: false,
+        status: 404,
         error: 'red-flag record ID provided does not exist',
       });
   }

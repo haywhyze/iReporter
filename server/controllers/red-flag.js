@@ -8,16 +8,15 @@ class RedFlagController {
     if (data[0] !== undefined) {
       return res.status(200)
         .send({
-          success: true,
-          message: 'Red Flags retrieved successfully',
-          redFlags: data,
+          status: 200,
+          data,
         });
     }
 
     return res.status(200)
       .send({
-        success: true,
-        message: 'No red-flags records available.',
+        status: 200,
+        data,
       });
   }
 
@@ -26,9 +25,8 @@ class RedFlagController {
     const redFlag = data.find(e => e.id === id);
     return res.status(200)
       .send({
-        success: 'true',
-        message: 'red-flag record retrieved succesfully',
-        redFlag,
+        status: 200,
+        data: [redFlag],
       });
   }
 
@@ -47,9 +45,11 @@ class RedFlagController {
     data.push(redFlag);
     return res.status(201)
       .send({
-        success: true,
-        message: 'Created red-flag record',
-        redFlag,
+        status: 201,
+        data: [{
+          id: redFlag.id,
+          message: 'Created red-flag record',
+        }],
       });
   }
 
@@ -67,9 +67,11 @@ class RedFlagController {
     const redFlag = data.splice(redFlagIndex, 1);
     return res.status(200)
       .send({
-        success: 'true',
-        message: 'red-flag record has been deleted',
-        redFlag,
+        status: 200,
+        data: [{
+          id: redFlag.id,
+          message: 'red-flag record has been deleted',
+        }],
       });
   }
 }
