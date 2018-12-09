@@ -1,16 +1,19 @@
-import moment from 'moment';
+import db from '../../db';
 
-const redFlags = [
-  {
-    id: 1,
-    subject: 'Need for Urgent Road Repair',
-    type: 'intervention',
-    location: '(6.593404442689329, 3.364960622142803)',
-    status: 'under investigation',
-    comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda!',
-    createdBy: 1,
-    createdOn: moment().format('LLLL'),
-  },
-];
-
-export default redFlags;
+module.exports = (async () => {
+  try {
+    await db.query(`CREATE TABLE IF NOT EXISTS
+    redflag(
+      id SERIAL PRIMARY KEY,
+      subject TEXT,
+      location TEXT NOT NULL,
+      status TEXT NOT NULL,
+      comment TEXT NOT NULL,
+      created_by INTEGER,
+      created_date TIMESTAMP
+    )`);
+  } catch (error) {
+    /* eslint-disable-next-line no-console */
+    console.log(error);
+  }
+});

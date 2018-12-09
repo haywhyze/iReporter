@@ -1,23 +1,26 @@
 import moment from 'moment';
+import db from '../../db';
 import data from '../models/red-flag';
 // import validID from '../helpers';
 import { update } from '../helpers';
 
 class RedFlagController {
-  static getAll(req, res) {
-    if (data[0] !== undefined) {
+  static async getAll(req, res) {
+    const findAll = 'SELECT * FROM redflag';
+    try {
+      const { rows } = await db.query(findAll);
       return res.status(200)
         .send({
           status: 200,
-          data,
+          data: rows,
+        });
+    } catch (error) {
+      return res.status(500)
+        .send({
+          status: 500,
+          error: 'Internal Server Error',
         });
     }
-
-    return res.status(200)
-      .send({
-        status: 200,
-        data,
-      });
   }
 
   static getOne(req, res) {
