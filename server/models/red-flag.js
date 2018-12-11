@@ -9,7 +9,8 @@ module.exports = (async () => {
       location TEXT NOT NULL,
       status TEXT NOT NULL,
       comment TEXT NOT NULL,
-      created_by INTEGER,
+      created_by INTEGER NOT NULL,
+      FOREIGN KEY (created_by) REFERENCES users (id) ON DELETE CASCADE,
       created_date TIMESTAMP
     )`);
   } catch (error) {

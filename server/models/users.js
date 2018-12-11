@@ -8,9 +8,9 @@ module.exports = (async () => {
       firstname TEXT NOT NULL,
       lastname TEXT NOT NULL,
       othernames TEXT,
-      email TEXT NOT NULL,
+      email TEXT UNIQUE NOT NULL,
       phone_number TEXT NOT NULL,
-      username TEXT NOT NULL,
+      username TEXT UNIQUE NOT NULL,
       password TEXT NOT NULL,
       is_admin BOOLEAN NOT NULL,
       registered TIMESTAMP
