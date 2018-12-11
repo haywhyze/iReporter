@@ -8,9 +8,6 @@ const populateError = (req) => {
   if (!req.body.location) {
     error.push('location');
   }
-  if (!req.body.type) {
-    error.push('type');
-  }
   return error;
 };
 

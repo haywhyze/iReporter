@@ -1,6 +1,5 @@
 import moment from 'moment';
 import data from '../models/red-flag';
-// import validID from '../helpers';
 import { update } from '../helpers';
 
 class RedFlagController {

@@ -3,7 +3,7 @@ import db from '../../db';
 module.exports = (async () => {
   try {
     await db.query(`CREATE TABLE IF NOT EXISTS
-    redflag(
+    intervention(
       id SERIAL PRIMARY KEY,
       subject TEXT,
       location TEXT NOT NULL,
