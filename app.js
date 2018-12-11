@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import router from './server/routes';
+import 'babel-polyfill';
 
 dotenv.config();
 const app = express();

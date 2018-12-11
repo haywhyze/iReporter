@@ -2,41 +2,17 @@
 import chai from 'chai';
 import { describe, it, beforeEach } from 'mocha';
 import chaiHttp from 'chai-http';
-import moment from 'moment';
-import data from '../models/red-flag';
+// import moment from 'moment';
 import app from '../../app';
 
 const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const dataLength = data.length;
-
 describe('Red Flags', () => {
   beforeEach((done) => {
-    // check if test has added to the data structure records
-    // if true, return to original state.
-    if (data.length > 1) {
-      data.splice(1, data.length - 1);
-      /* eslint-disable-next-line brace-style */
-    }
-    // check if test has deleted the inital seeded data
-    // if true, re-seed.
-    else if (data.length === 0) {
-      data.push({
-        id: 1,
-        subject: 'Need for Urgent Road Repair',
-        type: 'intervention',
-        location: '(6.593404442689329, 3.364960622142803)',
-        status: 'under investigation',
-        comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda!',
-        createdBy: 1,
-        createdOn: moment().format('LLLL'),
-      });
-    }
     done();
   });
-
 
   describe('GET /api/v1/', () => {
     it('should get the homepage', (done) => {
@@ -63,21 +39,7 @@ describe('Red Flags', () => {
           done();
         });
     });
-
-    it('should return empty array if there are no red flag records to display', (done) => {
-      data.splice(0, data.length);
-      chai.request(app)
-        .get('/api/v1/red-flags')
-        .end((err, res) => {
-          expect(res).to.exist;
-          expect(res.status).to.equal(200);
-          expect(res.body.status).to.exist;
-          expect(res.body.data).to.eql([]);
-          done();
-        });
-    });
   });
-
 
   describe('GET /api/v1/red-flags/<red-flag-id>', () => {
     it('should get a specific red-flag if ID exist', (done) => {
@@ -130,7 +92,6 @@ describe('Red Flags', () => {
           expect(res.status).to.equal(201);
           expect(res.body.status).to.exist;
           expect(res.body.data[0].message).to.equal('Created red-flag record');
-          expect(res.body.data[0].id).to.equal(dataLength + 1);
           done();
         });
     });
@@ -148,7 +109,6 @@ describe('Red Flags', () => {
           expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.include('comment');
-          expect(data.length).to.equal(dataLength);
           done();
         });
     });
@@ -166,7 +126,6 @@ describe('Red Flags', () => {
           expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.include('location');
-          expect(data.length).to.equal(dataLength);
           done();
         });
     });
@@ -184,7 +143,6 @@ describe('Red Flags', () => {
           expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.include('type');
-          expect(data.length).to.equal(dataLength);
           done();
         });
     });
@@ -203,7 +161,6 @@ describe('Red Flags', () => {
           expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.equal('Comment too short or too long');
-          expect(data.length).to.equal(dataLength);
           done();
         });
     });
@@ -222,7 +179,6 @@ describe('Red Flags', () => {
           expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.equal('Lat Long coordinates not valid');
-          expect(data.length).to.equal(dataLength);
           done();
         });
     });
@@ -241,7 +197,6 @@ describe('Red Flags', () => {
           expect(res.body.status).to.exist;
           expect(res.body.error).to.exist;
           expect(res.body.error).to.equal('Type not of accepted value');
-          expect(data.length).to.equal(dataLength);
           done();
         });
     });
