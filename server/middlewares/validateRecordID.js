@@ -1,6 +1,6 @@
-import db from '../../db';
+import data from '../models/red-flag';
 
-const validateRecordID = async (req, res, next) => {
+const validateRecordID = (req, res, next) => {
   const id = Number(req.params.id);
   if (Number.isNaN(id)
     || id % 1 !== 0
@@ -12,20 +12,16 @@ const validateRecordID = async (req, res, next) => {
         error: 'red-flag ID value provided is not valid',
       });
   }
-  const findOne = 'SELECT * from redflag WHERE id = $1';
-  try {
-    const { rowCount } = await db.query(findOne, [id]);
-    if (!rowCount) {
-      return res.status(404)
-        .send({
-          status: 404,
-          error: 'red-flag ID does not exist',
-        });
-    }
-    return next();
-  } catch (error) {
-    return next();
+  const found = data.find(e => e.id === id);
+  if (!found) {
+    return res.status(404)
+      .send({
+        status: 404,
+        error: 'red-flag record ID provided does not exist',
+      });
   }
+
+  return next();
 };
 
 

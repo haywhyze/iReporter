@@ -1,81 +1,56 @@
 import moment from 'moment';
-import db from '../../db';
+import data from '../models/red-flag';
 // import validID from '../helpers';
 import { update } from '../helpers';
 
 class RedFlagController {
-  static async getAll(req, res) {
-    const findAll = 'SELECT * FROM redflag';
-    try {
-      const { rows } = await db.query(findAll);
+  static getAll(req, res) {
+    if (data[0] !== undefined) {
       return res.status(200)
         .send({
           status: 200,
-          data: rows,
-        });
-    } catch (error) {
-      return res.status(500)
-        .send({
-          status: 500,
-          error: 'Internal Server Error',
+          data,
         });
     }
+
+    return res.status(200)
+      .send({
+        status: 200,
+        data,
+      });
   }
 
-  static async getOne(req, res) {
+  static getOne(req, res) {
     const id = Number(req.params.id);
-    const findOne = 'SELECT * from redflag WHERE id = $1';
-    try {
-      const { rows } = await db.query(findOne, [id]);
-      return res.status(200)
-        .send({
-          status: 200,
-          data: [rows],
-        });
-    } catch (error) {
-      return res.status(500)
-        .send({
-          status: 500,
-          error: 'Internal Server Error',
-        });
-    }
+    const redFlag = data.find(e => e.id === id);
+    return res.status(200)
+      .send({
+        status: 200,
+        data: [redFlag],
+      });
   }
 
-  static async create(req, res) {
-    const text = `INSERT INTO 
-  redflag(
-    subject, location, status, comment, created_By, created_date
-  )
-  VALUES($1, $2, $3, $4, $5, $6)
-  returning *
-  `;
+  static create(req, res) {
+    const redFlag = {
+      id: data.length + 1,
+      subject: req.body.subject || '',
+      type: req.body.type,
+      location: req.body.location,
+      status: 'draft',
+      comment: req.body.comment,
+      createdBy: 1,
+      createdOn: moment().format('LLLL'),
+    };
 
-    const values = [
-      req.body.subject || '',
-      req.body.location,
-      'draft',
-      req.body.comment,
-      1,
-      moment().format('LLLL'),
-    ];
-
-    try {
-      const { rows } = await db.query(text, values);
-      return res.status(201)
-        .send({
-          status: 201,
-          data: [{
-            id: rows[0].id,
-            message: 'Created red-flag record',
-          }],
-        });
-    } catch (error) {
-      return res.status(500)
-        .send({
-          status: 500,
-          error: 'Internal Server Error',
-        });
-    }
+    data.push(redFlag);
+    return res.status(201)
+      .send({
+        status: 201,
+        data: [{
+          id: redFlag.id,
+          message: 'Created red-flag record',
+        }],
+      });
   }
 
   static updateLocation(req, res) {
@@ -86,26 +61,18 @@ class RedFlagController {
     return update(req, res, 'comment');
   }
 
-  static async delete(req, res) {
+  static delete(req, res) {
     const id = Number(req.params.id);
-    const removeOne = 'DELETE from redflag WHERE id = $1 returning *';
-    try {
-      const { rows } = await db.query(removeOne, [id]);
-      return res.status(200)
-        .send({
-          status: 200,
-          data: [{
-            id: rows[0].id,
-            message: 'red-flag record has been deleted',
-          }],
-        });
-    } catch (error) {
-      return res.status(500)
-        .send({
-          status: 500,
-          error: 'Internal Server Error',
-        });
-    }
+    const redFlagIndex = data.findIndex(e => e.id === id);
+    const redFlag = data.splice(redFlagIndex, 1);
+    return res.status(200)
+      .send({
+        status: 200,
+        data: [{
+          id: redFlag.id,
+          message: 'red-flag record has been deleted',
+        }],
+      });
   }
 }
 
