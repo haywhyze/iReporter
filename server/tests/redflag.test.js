@@ -3,8 +3,8 @@ import chai from 'chai';
 import { describe, it, beforeEach } from 'mocha';
 import chaiHttp from 'chai-http';
 import moment from 'moment';
-import data from '../models/red-flag';
-import app from '../../app';
+import data from '../models/defunct';
+import app from '../app';
 
 const { expect } = chai;
 

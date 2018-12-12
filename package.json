@@ -5,9 +5,11 @@
     "main": "app.js",
     "scripts": {
         "test": "nyc mocha ./server/tests/* --require babel-core/register --exit",
-        "start": "node_modules/.bin/nodemon app.js --exec babel-node --",
+        "start": "node_modules/.bin/nodemon ./server/app.js --exec babel-node --",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
-        "serve": "babel-node app.js"
+        "serve": "babel-node ./server/app.js",
+        "seed-db": "babel-node seed.js",
+        "drop-db": "babel-node drop.js"
     },
     "repository": {
         "type": "git",

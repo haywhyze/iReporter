@@ -1,9 +1,13 @@
-import { joinStrings } from '../helpers';
+import { joinStrings, splitName } from '../helpers';
 
 const populateError = (req) => {
   const error = [];
   if (!req.body.fullname) {
     error.push('fullname');
+  }
+  const name = splitName(req.body.fullname);
+  if (!name.lastName) {
+    error.push('lastName');
   }
   if (!req.body.email) {
     error.push('email');

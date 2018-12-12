@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import moment from 'moment';
-import db from '../../db';
+import db from '../models/db';
 
 const saltRounds = 10;
 const plainPassword = '(adminPASSWORD2018)';

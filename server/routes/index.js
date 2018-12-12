@@ -7,11 +7,12 @@ import RedFlagController from '../controllers/red-flag';
 import userIsEmpty from '../middlewares/userIsEmpty';
 import UsersController from '../controllers/users';
 import validateUserInput from '../middlewares/validateUserInput';
+import userInfoExist from '../middlewares/userInfoExist';
 
 const router = Router();
 
 // Sign up Route
-router.post('/api/v1/auth/signup', userIsEmpty, validateUserInput, UsersController.create);
+router.post('/api/v1/auth/signup', userIsEmpty, validateUserInput, userInfoExist, UsersController.create);
 
 // RedFlag Routes
 router.get('/api/v1/red-flags', RedFlagController.getAll);
