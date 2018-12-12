@@ -1,4 +1,6 @@
-import data from '../models/red-flag';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import data from '../models/defunct';
 
 const joinStrings = (strings) => {
   const stringArray = strings.map(x => `${x},`);
@@ -7,7 +9,7 @@ const joinStrings = (strings) => {
   return stringArray.join(' ');
 };
 
-const update = (req, res, param) => {
+const update = async (req, res, param) => {
   const id = Number(req.params.id);
   const redFLagIndex = data.findIndex(x => x.id === id);
   data[redFLagIndex][param] = req.body[param];
@@ -21,5 +23,31 @@ const update = (req, res, param) => {
     });
 };
 
+const splitName = (fullName) => {
+  const namesArr = fullName.split(' ');
+  /* eslint-disable-next-line prefer-const */
+  let [firstName, lastName, ...otherNames] = namesArr;
+  otherNames = otherNames.join(' ');
+  return { firstName, lastName, otherNames };
+};
 
-export { joinStrings, update };
+const hashPassword = password => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+
+const comparePassword = (hashedPassword, password) => bcrypt.compareSync(password, hashedPassword);
+
+const generateToken = (id) => {
+  const token = jwt.sign({
+    userId: id,
+  },
+  process.env.SECRET, { expiresIn: '7d' });
+  return token;
+};
+
+export {
+  joinStrings,
+  update,
+  splitName,
+  hashPassword,
+  comparePassword,
+  generateToken,
+};
