@@ -2,11 +2,8 @@ import { joinStrings } from '../helpers';
 
 const populateError = (req) => {
   const error = [];
-  if (!req.body.firstname) {
-    error.push('firstname');
-  }
-  if (!req.body.lastname) {
-    error.push('lastname');
+  if (!req.body.fullname) {
+    error.push('fullname');
   }
   if (!req.body.email) {
     error.push('email');
@@ -19,6 +16,9 @@ const populateError = (req) => {
   }
   if (!req.body.password) {
     error.push('password');
+  }
+  if (!req.body.confirmPassword) {
+    error.push('confirm password');
   }
   return error;
 };
@@ -34,9 +34,7 @@ const setErrorMsg = (error) => {
 };
 
 const userIsEmpty = (req, res, next) => {
-
   const error = populateError(req);
-
   if (error[0]) {
     const errorMsg = setErrorMsg(error);
     return res.status(400)

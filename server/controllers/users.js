@@ -1,25 +1,26 @@
-import moment from 'moment';
 import db from '../../db';
-import { hashPassword, generateToken, comparePassword } from '../helpers';
+import { hashPassword, generateToken, splitName } from '../helpers';
 
 class UserController {
   static async create(req, res) {
+    const name = splitName(req.body.fullname);
     const hashedPassword = hashPassword(req.body.password);
-    const query = `firstname, lastname, othernames, email, password, phone_number, username,
+    const query = `INSERT INTO
+    users(firstname, lastname, othernames, email, password, phone_number, username,
     is_admin, registered
   )
   VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
       returning *`;
     const values = [
-      req.body.firstname,
-      req.body.lastname,
-      req.body.othernames,
+      name.firstName,
+      name.lastName,
+      name.otherNames,
       req.body.email,
       hashedPassword,
       req.body.phoneNumber,
       req.body.username,
       false,
-      moment().format('LLLL'),
+      new Date(),
     ];
 
     try {
@@ -27,42 +28,25 @@ class UserController {
       const token = generateToken(rows[0].id);
       return res.status(201)
         .send({
-          token,
+          status: 201,
+          data: [{
+            token,
+            user: rows[0],
+          }],
         });
     } catch (err) {
       if (err.routine === '_bt_check_unique') {
         return res.status(400)
           .send({
-            message: 'User with that Email/Username already exist',
+            status: 400,
+            error: 'User with that Email/Username already exist',
           });
       }
-      return res.status(400)
-        .send(err, 'lol');
-    }
-  }
-
-  static async login(req, res) {
-    const query = 'SELECT * FROM users WHERE email = $1';
-    try {
-      const { rows } = await db.query(query, [req.body.email]);
-      if (!rows[0]) {
-        return res.status(400)
-          .send({
-            message: 'The credentials you provided is incorrect'
-          });
-      }
-      if (!comparePassword(rows[0].password, req.body.password)) {
-        return res.status(400)
-          .send({
-            message: 'The credentials you provided is incorrect',
-          });
-      }
-      const token = generateToken(rows[0].id);
-      return res.status(200)
-        .send({ token });
-    } catch (err) {
-      return res.status(400)
-        .send(err);
+      return res.status(500)
+        .send({
+          status: 500,
+          err,
+        });
     }
   }
 }

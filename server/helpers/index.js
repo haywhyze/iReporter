@@ -23,6 +23,13 @@ const update = async (req, res, param) => {
     });
 };
 
+const splitName = (fullName) => {
+  const namesArr = fullName.split(' ');
+  /* eslint-disable-next-line prefer-const */
+  let [firstName, lastName, ...otherNames] = namesArr;
+  otherNames = otherNames.join(' ');
+  return { firstName, lastName, otherNames };
+};
 
 const hashPassword = password => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
@@ -39,6 +46,7 @@ const generateToken = (id) => {
 export {
   joinStrings,
   update,
+  splitName,
   hashPassword,
   comparePassword,
   generateToken,
