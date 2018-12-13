@@ -16,7 +16,7 @@ const verifyToken = async (req, res, next) => {
     if (!rows[0]) {
       return res.status(400)
         .send({
-          status: 400,
+          status: 401,
           error: 'Invalid token',
         });
     }
@@ -24,7 +24,7 @@ const verifyToken = async (req, res, next) => {
   } catch (error) {
     return res.status(400)
       .send({
-        status: 400,
+        status: 401,
         error: 'Invalid token',
       });
   }
