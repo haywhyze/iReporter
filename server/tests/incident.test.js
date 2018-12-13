@@ -46,7 +46,7 @@ describe('Incident Route', () => {
       const res = await chai.request(app)
         .get('/api/v1/red-flags')
         .set('x-access-token', 'justarandomddadd');
-      expect(res.status).to.equal(400);
+      expect(res.status).to.equal(401);
     });
     it('should get all red-flags for logged in user', async () => {
       const res = await chai.request(app)
