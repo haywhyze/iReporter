@@ -1,5 +1,5 @@
 const isValidComment = (req, res, next) => {
-  if (req.body.comment.length < 50 || req.body.comment.length > 420) {
+  if (req.body.comment.trim().length < 50 || req.body.comment.trim().length > 420) {
     return res.status(400)
       .send({
         status: 400,

@@ -24,7 +24,35 @@ class IncidentController {
         data: [rows],
       });
   }
-}
 
+  static async create(req, res) {
+    const type = resolveType(req);
+    const values = [
+      req.body.subject || '',
+      req.body.location.trim(),
+      'draft',
+      req.body.comment.trim(),
+      req.user.id,
+      new Date(),
+    ];
+
+    const { rows } = await QueryHelpers.createIncident(type, values);
+    if (rows[0]) {
+      return res.status(201)
+        .send({
+          status: 201,
+          data: [{
+            id: rows[0].id,
+            message: 'Created red-flag record',
+          }],
+        });
+    }
+    return res.status(500)
+      .send({
+        status: 500,
+        error: 'Internal Server Error',
+      });
+  }
+}
 
 export default IncidentController;

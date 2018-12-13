@@ -46,6 +46,22 @@ class QueryHelpers {
       return undefined;
     }
   }
+
+  static async createIncident(table, userInfo) {
+    const text = `INSERT INTO 
+      ${table}(
+        subject, location, status, comment, created_By, created_date
+      )
+      VALUES($1, $2, $3, $4, $5, $6)
+      returning *
+      `;
+    try {
+      const result = db.query(text, userInfo);
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default QueryHelpers;
