@@ -24,4 +24,12 @@ router.patch('/api/v1/red-flags/:id/location', verifyToken, validateRecordID, is
 router.patch('/api/v1/red-flags/:id/comment', verifyToken, validateRecordID, isEmpty, isValidComment, IncidentController.updateComment);
 router.delete('/api/v1/red-flags/:id', verifyToken, validateRecordID, IncidentController.delete);
 
+// Intervention Routes
+router.get('/api/v1/interventions', verifyToken, IncidentController.getAllByUser);
+router.get('/api/v1/interventions/:id', verifyToken, validateRecordID, IncidentController.getOneByUser);
+router.post('/api/v1/interventions', verifyToken, isEmpty, isValidLocation, isValidComment, IncidentController.create);
+router.patch('/api/v1/interventions/:id/location', verifyToken, validateRecordID, isEmpty, isValidLocation, IncidentController.updateLocation);
+router.patch('/api/v1/interventions/:id/comment', verifyToken, validateRecordID, isEmpty, isValidComment, IncidentController.updateComment);
+router.delete('/api/v1/interventions/:id', verifyToken, validateRecordID, IncidentController.delete);
+
 export default router;

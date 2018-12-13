@@ -72,7 +72,7 @@ class IncidentController {
           status: 200,
           data: [{
             id: rows[0].id,
-            message: 'red-flag record has been deleted',
+            message: `${type} record has been deleted`,
           }],
         });
     }
