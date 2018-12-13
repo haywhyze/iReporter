@@ -42,14 +42,14 @@ class UserController {
       return res.status(400)
         .send({
           status: 400,
-          error: 'Username Provided is incorrect',
+          error: 'Username/Password is incorrect',
         });
     }
     if (!comparePassword(rows[0].password, req.body.password)) {
       return res.status(400)
         .send({
           status: 400,
-          error: 'The password provided is incorrect',
+          error: 'Username/Password is incorrect',
         });
     }
     const token = generateToken(rows[0].id);
