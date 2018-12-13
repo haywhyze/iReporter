@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import 'babel-polyfill';
 import data from '../models/defunct';
 
 const joinStrings = (strings) => {
