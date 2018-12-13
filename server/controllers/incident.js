@@ -1,5 +1,5 @@
 import QueryHelpers from '../helpers/QueryHelpers';
-import { resolveType } from '../helpers';
+import { resolveType, update } from '../helpers';
 
 class IncidentController {
   static async getAllByUser(req, res) {
@@ -52,6 +52,14 @@ class IncidentController {
         status: 500,
         error: 'Internal Server Error',
       });
+  }
+
+  static updateLocation(req, res) {
+    return update(req, res, 'location');
+  }
+
+  static updateComment(req, res) {
+    return update(req, res, 'comment');
   }
 
   static async delete(req, res) {

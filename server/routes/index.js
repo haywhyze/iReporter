@@ -20,8 +20,8 @@ router.post('/api/v1/auth/login', UsersController.login);
 router.get('/api/v1/red-flags', verifyToken, IncidentController.getAllByUser);
 router.get('/api/v1/red-flags/:id', verifyToken, validateRecordID, IncidentController.getOneByUser);
 router.post('/api/v1/red-flags', verifyToken, isEmpty, isValidLocation, isValidComment, IncidentController.create);
-// router.patch('/api/v1/red-flags/:id/location', validateRecordID, isEmpty, isValidLocation, RedFlagController.updateLocation);
-// router.patch('/api/v1/red-flags/:id/comment', validateRecordID, isEmpty, isValidComment, RedFlagController.updateComment);
+router.patch('/api/v1/red-flags/:id/location', verifyToken, validateRecordID, isEmpty, isValidLocation, IncidentController.updateLocation);
+router.patch('/api/v1/red-flags/:id/comment', verifyToken, validateRecordID, isEmpty, isValidComment, IncidentController.updateComment);
 router.delete('/api/v1/red-flags/:id', verifyToken, validateRecordID, IncidentController.delete);
 
 export default router;
