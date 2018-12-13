@@ -23,10 +23,18 @@ class QueryHelpers {
     } catch (err) {
       console.log(err);
     }
-    
     const text = 'SELECT email, username FROM users WHERE email = $1 OR username = $2';
     const result = await db.query(text, userInfo);
     return result;
+  }
+
+  static async getAll(table, column, userInfo) {
+    try {
+      const result = await db.query(`SELECT * FROM ${table} WHERE ${column} = $1`, userInfo);
+      return result;
+    } catch (error) {
+      return undefined;
+    }
   }
 }
 

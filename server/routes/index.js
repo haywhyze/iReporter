@@ -13,6 +13,7 @@ const router = Router();
 
 // Sign up Route
 router.post('/api/v1/auth/signup', userIsEmpty, validateUserInput, userInfoExist, UsersController.create);
+router.post('/api/v1/auth/login', UsersController.login);
 
 // RedFlag Routes
 router.get('/api/v1/red-flags', RedFlagController.getAll);
