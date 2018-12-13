@@ -1,6 +1,7 @@
-import data from '../models/red-flag';
+import QueryHelpers from '../helpers/QueryHelpers';
+import { resolveType } from '../helpers';
 
-const validateRecordID = (req, res, next) => {
+const validateRecordID = async (req, res, next) => {
   const id = Number(req.params.id);
   if (Number.isNaN(id)
     || id % 1 !== 0
@@ -12,15 +13,15 @@ const validateRecordID = (req, res, next) => {
         error: 'red-flag ID value provided is not valid',
       });
   }
-  const found = data.find(e => e.id === id);
-  if (!found) {
+  const type = resolveType(req);
+  const { rows } = await QueryHelpers.getAll(`${type}`, 'id', [id]);
+  if (!rows[0]) {
     return res.status(404)
       .send({
         status: 404,
-        error: 'red-flag record ID provided does not exist',
+        error: 'red-flag ID does not exist',
       });
   }
-
   return next();
 };
 
