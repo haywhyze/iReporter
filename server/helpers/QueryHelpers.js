@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import db from '../models/db';
 
 class QueryHelpers {
@@ -31,6 +32,15 @@ class QueryHelpers {
   static async getAll(table, column, userInfo) {
     try {
       const result = await db.query(`SELECT * FROM ${table} WHERE ${column} = $1`, userInfo);
+      return result;
+    } catch (error) {
+      return undefined;
+    }
+  }
+
+  static async getOneByUser(table, userInfo) {
+    try {
+      const result = await db.query(`SELECT * FROM ${table} WHERE id = $1 AND created_by = $2`, userInfo);
       return result;
     } catch (error) {
       return undefined;

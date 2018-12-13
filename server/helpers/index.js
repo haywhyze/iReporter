@@ -44,6 +44,17 @@ const generateToken = (id) => {
   return token;
 };
 
+const resolveType = (req) => {
+  const path = req.url.split('/');
+  let type = path[3];
+  if (type === 'red-flags') {
+    type = 'redflag';
+  } else {
+    type = 'intervention';
+  }
+  return type;
+};
+
 export {
   joinStrings,
   update,
@@ -51,4 +62,5 @@ export {
   hashPassword,
   comparePassword,
   generateToken,
+  resolveType,
 };

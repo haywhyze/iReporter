@@ -1,5 +1,5 @@
 import { Router } from 'express';
-// import validateRecordID from '../middlewares/validateRecordID';
+import validateRecordID from '../middlewares/validateRecordID';
 // import isEmpty from '../middlewares/isEmpty';
 // import isValidLocation from '../middlewares/isValidLocation';
 // import isValidComment from '../middlewares/isValidComment';
@@ -18,7 +18,7 @@ router.post('/api/v1/auth/login', UsersController.login);
 
 // RedFlag Routes
 router.get('/api/v1/red-flags', verifyToken, IncidentController.getAllByUser);
-// router.get('/api/v1/red-flags/:id', validateRecordID, RedFlagController.getOne);
+router.get('/api/v1/red-flags/:id', verifyToken, validateRecordID, IncidentController.getOneByUser);
 // router.post('/api/v1/red-flags', isEmpty, isValidLocation, isValidComment, RedFlagController.create);
 // router.patch('/api/v1/red-flags/:id/location', validateRecordID, isEmpty, isValidLocation, RedFlagController.updateLocation);
 // router.patch('/api/v1/red-flags/:id/comment', validateRecordID, isEmpty, isValidComment, RedFlagController.updateComment);
