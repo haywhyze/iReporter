@@ -53,6 +53,27 @@ class IncidentController {
         error: 'Internal Server Error',
       });
   }
+
+  static async delete(req, res) {
+    const type = resolveType(req);
+    const id = Number(req.params.id);
+    const { rows } = await QueryHelpers.deleteOneByUser(`${type}`, [id, req.user.id]);
+    if (rows[0]) {
+      return res.status(200)
+        .send({
+          status: 200,
+          data: [{
+            id: rows[0].id,
+            message: 'red-flag record has been deleted',
+          }],
+        });
+    }
+    return res.status(500)
+      .send({
+        status: 500,
+        error: 'Internal Server Error',
+      });
+  }
 }
 
 export default IncidentController;
