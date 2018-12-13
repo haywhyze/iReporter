@@ -8,7 +8,7 @@ import seedusers from './server/seed/users';
 
 dotenv.config();
 
-(async () => {
+module.exports = async () => {
   await users();
   await redflag();
   await intervention();
@@ -16,4 +16,4 @@ dotenv.config();
   await seedusers();
   await seedredflag();
   await seedintervention();
-})();
+};

@@ -1,5 +1,7 @@
 import db from './db';
 
+import 'babel-polyfill';
+
 module.exports = (async () => {
   try {
     await db.query(`CREATE TABLE IF NOT EXISTS
