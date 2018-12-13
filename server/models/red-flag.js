@@ -1,4 +1,6 @@
-import db from '../../db';
+import db from './db';
+
+import 'babel-polyfill';
 
 module.exports = (async () => {
   try {
