@@ -8,8 +8,7 @@
         "start": "node_modules/.bin/nodemon ./server/app.js --exec babel-node --",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
         "serve": "babel-node ./server/app.js",
-        "seed-db": "babel-node seed.js",
-        "drop-db": "babel-node drop.js"
+        "init-db": "babel-node drop.js"
     },
     "repository": {
         "type": "git",

@@ -16,21 +16,21 @@ module.exports = (async () => {
     '(6.8484755033948, 3.37678999473)',
     'draft',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda!',
-    1,
+    2,
     moment().format('LLLL'),
   ], [
     'Need for Urgent Road Repair',
     '(6.593404442689329, 3.364960622142803)',
     'draft',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda!',
-    1,
+    2,
     moment().format('LLLL'),
   ], [
     'Corruption Case at Ministry',
     '(6.553898, 3.365978)',
     'draft',
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quisquam repellat recusandae quasi accusamus perferendis, maiores blanditiis assumenda!',
-    1,
+    2,
     moment().format('LLLL'),
   ]];
   try {

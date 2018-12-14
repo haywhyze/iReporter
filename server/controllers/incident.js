@@ -1,5 +1,6 @@
 import QueryHelpers from '../helpers/QueryHelpers';
 import { resolveType, update } from '../helpers';
+import db from '../models/db';
 
 class IncidentController {
   static async getAllByUser(req, res) {
@@ -60,6 +61,35 @@ class IncidentController {
 
   static updateComment(req, res) {
     return update(req, res, 'comment');
+  }
+
+  static async updateStatus(req, res) {
+    const id = Number(req.params.id);
+    const type = resolveType(req);
+    const updateOne = `UPDATE ${type}
+      SET status=$1
+      WHERE id=$2 returning *`;
+    const values = [
+      req.body.status,
+      id,
+    ];
+    try {
+      const { rows } = await db.query(updateOne, values);
+      return res.status(200)
+        .send({
+          status: 200,
+          data: [{
+            id: rows[0].id,
+            message: `Updated ${type} record's status`,
+          }],
+        });
+    } catch (error) {
+      return res.status(500)
+        .send({
+          status: 500,
+          error: 'Internal Server Error',
+        });
+    }
   }
 
   static async delete(req, res) {

@@ -9,7 +9,7 @@ class QueryHelpers {
           password, phone_number, username,
           is_admin, registered)
     VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
-    returning firstname, lastname, othernames, email, phone_number, username, is_admin registered`, userInfo);
+    returning id, firstname, lastname, othernames, email, phone_number, username, is_admin, registered`, userInfo);
 
       return result;
     } catch (error) {
