@@ -21,8 +21,8 @@ const isAdmin = async (req, res, next) => {
           });
       }
     } else if (req.params.id) {
-      rows = await db.query(`SELECT * FROM ${type} WHERE id = $1 returning *`, [req.params.id]);
-      if (rows[0]) {
+      const result = await db.query(`SELECT * FROM ${type} WHERE id = $1 returning *`, [req.params.id]);
+      if (result.rows[0]) {
         res.status(200)
           .send({
             status: 200,
