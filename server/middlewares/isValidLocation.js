@@ -1,7 +1,7 @@
 const isValidLocation = (req, res, next) => {
   const regexLocation = /^\(?[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?\)?)$/;
 
-  if (!regexLocation.test(req.body.location)) {
+  if (!regexLocation.test(req.body.location.trim())) {
     return res.status(400)
       .send({
         status: 400,

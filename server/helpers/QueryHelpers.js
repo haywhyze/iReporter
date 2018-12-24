@@ -9,7 +9,7 @@ class QueryHelpers {
           password, phone_number, username,
           is_admin, registered)
     VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
-    returning *`, userInfo);
+    returning id, firstname, lastname, othernames, email, phone_number, username, is_admin, registered`, userInfo);
 
       return result;
     } catch (error) {
@@ -44,6 +44,31 @@ class QueryHelpers {
       return result;
     } catch (error) {
       return undefined;
+    }
+  }
+
+  static async deleteOneByUser(table, userInfo) {
+    try {
+      const result = await db.query(`DELETE FROM ${table} WHERE id = $1 AND created_by = $2 returning id`, userInfo);
+      return result;
+    } catch (error) {
+      return undefined;
+    }
+  }
+
+  static async createIncident(table, userInfo) {
+    const text = `INSERT INTO 
+      ${table}(
+        subject, location, status, comment, created_By, created_date
+      )
+      VALUES($1, $2, $3, $4, $5, $6)
+      returning *
+      `;
+    try {
+      const result = db.query(text, userInfo);
+      return result;
+    } catch (error) {
+      return error;
     }
   }
 }

@@ -27,7 +27,7 @@ describe('Auth User', () => {
           phoneNumber: '08031961496',
           username: 'user007',
         });
-      expect(res.status).to.eql(201);
+      expect(res.status).to.equal(201);
       expect(res.body.data).to.exist;
       expect(res.body.data[0].token).to.be.a('string');
       expect(res.body.data[0].user.id).to.be.a('number');

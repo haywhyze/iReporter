@@ -9,31 +9,13 @@ const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const token1 = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTU0NDcwMzc4NSwiZXhwIjoxNTQ1MzA4NTg1fQ.hWQaM1RWg7PdBRAsl7omO2aTDO8ImD6fXoUwhxEHU9g';
+const token1 = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTU0NDc2MjAwOCwiZXhwIjoxNTQ1MzY2ODA4fQ.zThz_sALGAaQ7xxPeTar3oa6_6035LbSE7ooDKAl9Sk';
 // let token2;
 
 describe('Incident Route', () => {
   before(async () => {
     await dropTables();
     await seed();
-    // await chai.request(app)
-    //   .post('/api/v1/auth/signup')
-    //   .send({
-    //     fullname: 'Ayomide Ajasin Oluyole',
-    //     email: 'hay@haz.com',
-    //     password: 'hhhhhdddkjkj',
-    //     confirmPassword: 'hhhhhdddkjkj',
-    //     phoneNumber: '08031961496',
-    //     username: 'user007',
-    //   });
-    // const res = await chai.request(app)
-    //   .post('/api/v1/auth/login')
-    //   .send({
-    //     email: 'hay@hayz.com',
-    //     password: 'hhhhhdddkjkj',
-    //   });
-    // console.log(res);
-    // token2 = res.body.data[0].token;
   });
 
   describe('GET /api/v1/red-flags', () => {

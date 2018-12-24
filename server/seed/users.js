@@ -3,10 +3,12 @@ import moment from 'moment';
 import db from '../models/db';
 
 const saltRounds = 10;
-const plainPassword = '(adminPASSWORD2018)';
+const adminPassword = '(adminPASSWORD2018)';
+const userPassword = '(userPASSWORD2018)';
 
 module.exports = (async () => {
-  const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
+  const hashedPassword = await bcrypt.hash(adminPassword, saltRounds);
+  const hashUserPassword = await bcrypt.hash(userPassword, saltRounds);
   const text = `INSERT INTO 
   users(
     firstname, lastname, othernames, email, password, phone_number, username,
@@ -16,7 +18,7 @@ module.exports = (async () => {
   returning *
   `;
 
-  const values = [
+  const values = [[
     'Yusuf',
     'Abdulkarim',
     'Ayo',
@@ -26,9 +28,20 @@ module.exports = (async () => {
     'haywhyze',
     true,
     moment().format('LLLL'),
-  ];
+  ], [
+    'Ayobami',
+    'Olaitan',
+    'Omotunde',
+    'haywhyze@myspace.com',
+    `${hashUserPassword}`,
+    '08055744044',
+    'hayzbaba',
+    false,
+    new Date(),
+  ]];
   try {
-    await db.query(text, values);
+    await db.query(text, values[0]);
+    await db.query(text, values[1]);
   } catch (error) {
     /* eslint-disable-next-line no-console */
     console.log(error);
